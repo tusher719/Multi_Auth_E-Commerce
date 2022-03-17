@@ -1,5 +1,7 @@
 @extends('admin.admin_master')
-
+@section('dashboard')
+    active
+@endsection
 @section('admin')
     <div class="container-full">
 
