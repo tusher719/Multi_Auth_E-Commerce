@@ -5,23 +5,21 @@
             <div class="row">
                 <div class="col-md-2">
                     <br>
-                    <img class="card-img-top" src="{{ (!empty($editData->profile_photo_path)) ? url('uploads/admin_images/'.$editData->profile_photo_path) : url('uploads/no_image.jpg') }}" style="border-radius: 50%; height: 100%; width: 100%;">
+                    <img class="card-img-top" src="{{ (!empty($user->profile_photo_path)) ? url('uploads/user_images/'.$user->profile_photo_path) : url('uploads/no_image.jpg') }}" style="border-radius: 50%; height: 150px; width: 150px; object-fit: cover;">
                     <br><br>
                     <ul class="list-group list-group-flush">
-                        <a href="" class="btn btn-primary btn-sm btn-block">Home</a>
-                        <a href="" class="btn btn-primary btn-sm btn-block">Profile Update</a>
+                        <a href="{{ url('/dashboard') }}" class="btn btn-primary btn-sm btn-block">Home</a>
+                        <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
                         <a href="" class="btn btn-primary btn-sm btn-block">Change Password</a>
-                        <a href="" class="btn btn-danger btn-sm btn-block">Logout</a>
+                        <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
                     </ul>
                 </div> <!-- End col md 2 -->
 
-                <div class="col-md-2">
-                    script write
-                </div> <!-- End col md 2 -->
+                <div class="col-md-2"></div> <!-- End col md 2 -->
 
                 <div class="col-md-6">
                     <div class="card">
-                        <div class="text-center"><span class="text-danger">Hello World!</span><strong> {{ Auth::user()->name }} </strong> Welcome to Easy Online Shop</div>
+                        <h3 class="text-center"><span class="text-danger">Hello...</span><strong> {{ Auth::user()->name }} </strong> Welcome To Easy Online Shop</h3>
                     </div>
                 </div> <!-- End col md 6 -->
             </div> <!-- End row -->
