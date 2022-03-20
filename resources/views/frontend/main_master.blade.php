@@ -29,6 +29,9 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- toastr Cdn -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 </head>
 <body class="cnt-home">
 <!-- ============================================== HEADER ============================================== -->
@@ -47,6 +50,7 @@
 <!-- For demo purposes – can be removed on production : End -->
 
 <!-- JavaScripts placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/jquery-1.11.1.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/bootstrap.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/bootstrap-hover-dropdown.min.js"></script>
@@ -59,5 +63,45 @@
 <script src="{{ asset('frontend') }}/assets/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/wow.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/scripts.js"></script>
+
+<!-- toastr Script -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script type="text/javascript">
+    // Laravel Toster
+    @if(Session::has('message'))
+    var type = "{{ Session::get('alert-type','info') }}"
+    switch(type){
+        case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+
+        case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+
+        case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+
+        case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+    }
+    @endif
+
+
+
+    // Image Preview
+    $(document).ready(function () {
+        $('#image').change(function (e) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
 </body>
 </html>
