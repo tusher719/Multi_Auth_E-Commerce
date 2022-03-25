@@ -42,4 +42,42 @@ class CategoryController extends Controller
     }
 
 
+    // Edit Function
+    public function CategoryEdit($id){
+        $category = Category::findOrFail($id);
+        return view('backend.category.category_edit', compact('category'));
+    }
+
+    // Update Function
+    public function CategoryUpdate(Request $request){
+        $cat_id = $request->id;
+
+        Category::findOrFail($cat_id)->update([
+            'category_name_en' => $request->category_name_en,
+            'category_name_ban' => $request->category_name_ban,
+            'category_slug_en' => strtolower(str_replace('', '-',$request->category_name_en)),
+            'category_slug_ban' => str_replace('', '-',$request->category_name_ban),
+            'category_icon' => $request->category_icon,
+        ]);
+
+        $notification = array(
+            'message' => 'Category Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('all.category')->with($notification);
+    } // End Method
+
+
+    // Delete function
+    public function CategoryDelete($id){
+        Category::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->back()->with($notification);
+    } // End Method
+
+
 }
