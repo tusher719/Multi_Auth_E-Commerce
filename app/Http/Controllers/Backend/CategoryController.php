@@ -10,8 +10,9 @@ class CategoryController extends Controller
 {
     // View Method
     public function CategoryView(){
+        $total_cat = Category::count();
         $category = Category::latest()->get();
-        return view('backend.category.category_view', compact('category'));
+        return view('backend.category.category_view', compact('category', 'total_cat'));
     } // End Method
 
 
@@ -29,8 +30,8 @@ class CategoryController extends Controller
         Category::insert([
             'category_name_en' => $request->category_name_en,
             'category_name_ban' => $request->category_name_ban,
-            'category_slug_en' => strtolower(str_replace('', '-',$request->category_name_en)),
-            'category_slug_ban' => str_replace('', '-',$request->category_name_ban),
+            'category_slug_en' => strtolower(str_replace(' ', '-',$request->category_name_en)),
+            'category_slug_ban' => str_replace(' ', '-',$request->category_name_ban),
             'category_icon' => $request->category_icon,
         ]);
 
@@ -55,8 +56,8 @@ class CategoryController extends Controller
         Category::findOrFail($cat_id)->update([
             'category_name_en' => $request->category_name_en,
             'category_name_ban' => $request->category_name_ban,
-            'category_slug_en' => strtolower(str_replace('', '-',$request->category_name_en)),
-            'category_slug_ban' => str_replace('', '-',$request->category_name_ban),
+            'category_slug_en' => strtolower(str_replace(' ', '-',$request->category_name_en)),
+            'category_slug_ban' => str_replace(' ', '-',$request->category_name_ban),
             'category_icon' => $request->category_icon,
         ]);
 
