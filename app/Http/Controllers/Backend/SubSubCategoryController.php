@@ -18,9 +18,18 @@ class SubSubCategoryController extends Controller
         return view('backend.category.sub_subcategory_view', compact('subsubcategory','total_subcat', 'categories'));
     }
 
+
+    // Ajax SubCategory Method
     public function GetSubCategory($category_id){
         $subcat = SubCategory::where('category_id', $category_id)->orderBy('subcategory_name_en', 'ASC')->get();
         return json_encode($subcat);
+    }
+
+
+    // Ajax Sub-SubCategory Method
+    public function GetSubSubCategory($subcategory_id){
+        $subsubcat = SubSubCategory::where('subcategory_id', $subcategory_id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+        return json_encode($subsubcat);
     }
 
 
