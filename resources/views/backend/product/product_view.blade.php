@@ -42,9 +42,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Image</th>
-                                        <th>Product Name En</th>
-                                        <th>Product Name Ban</th>
+                                        <th>Product En</th>
+                                        <th>Product Price </th>
                                         <th>Product Quantity</th>
+                                        <th>Discount </th>
+                                        <th>Status </th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -54,11 +56,47 @@
                                             <td>{{ $loop->index+1 }}</td>
                                             <td><img src="{{ asset($item->product_thambnail) }}" style="height: 80px; width: 70px;" alt="Product_image"> </td>
                                             <td>{{ $item->product_name_en }}</td>
-                                            <td>{{ $item->product_name_ban }}</td>
-                                            <td>{{ $item->product_qty }}</td>
+                                            <td>{{ $item->selling_price }} $</td>
+                                            <td>{{ $item->product_qty }} Pic</td>
+
                                             <td>
-                                                <a href="{{ route('category.edit', $item->id) }}" class="btn btn-primary" title="Edit Data"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{ route('category.delete', $item->id) }}" class="btn btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+                                                @if($item->discount_price == NULL)
+                                                    <span class="badge badge-pill badge-danger">No Discount</span>
+
+                                                @else
+                                                    @php
+                                                        $amount = $item->selling_price - $item->discount_price;
+                                                        $discount = ($amount/$item->selling_price) * 100;
+                                                    @endphp
+                                                    <span class="badge badge-pill badge-danger">{{ round($discount) }} %</span>
+
+                                                @endif
+
+
+
+                                            </td>
+
+                                            <td>
+                                                @if($item->status == 1)
+                                                    <span class="badge badge-pill badge-success"> Active </span>
+                                                @else
+                                                    <span class="badge badge-pill badge-danger"> InActive </span>
+                                                @endif
+
+                                            </td>
+
+
+                                            <td width="22%">
+                                                <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary" title="Product Details Data"><i class="fa fa-eye"></i> </a>
+                                                <a href="{{ route('product.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+
+                                                <a href="{{ route('product.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete"><i class="fa fa-trash"></i></a>
+
+                                                @if($item->status == 1)
+                                                    <a href="{{ route('product.inactive',$item->id) }}" class="btn btn-danger" title="Inactive Now"><i class="fa fa-arrow-down"></i> </a>
+                                                @else
+                                                    <a href="{{ route('product.active',$item->id) }}" class="btn btn-success" title="Active Now"><i class="fa fa-arrow-up"></i> </a>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
