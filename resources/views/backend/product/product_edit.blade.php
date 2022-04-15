@@ -8,7 +8,7 @@
         <div class="content-header">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="page-title">Manage Product</h3>
+                    <h3 class="page-title">Product Edit</h3>
                     <div class="d-inline-block align-items-center">
                         <nav>
                             <ol class="breadcrumb">
@@ -154,7 +154,7 @@
                                                     <h5>Product Name Ban <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_name_ban" class="form-control" required=""  value="{{ $products->product_name_ban }}">
-                                                        @error('product_name_hin')
+                                                        @error('product_name_ban')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -170,7 +170,7 @@
                                             <div class="col-md-4">
 
                                                 <div class="form-group">
-                                                    <h5>Product Code <span class="text-danger">*</span></h5>
+                                                    <h5>Product Codname <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_code" class="form-control" required="" value="{{ $products->product_code }}">
                                                         @error('product_code')
@@ -224,7 +224,7 @@
                                                     <h5>Product Tags Ban <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_tags_ban" class="form-control" value="{{ $products->product_tags_ban }}" data-role="tagsinput" required="">
-                                                        @error('product_tags_hin')
+                                                        @error('product_tags_ban')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -253,7 +253,7 @@
                                                     <h5>Product Size Ban <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_size_ban" class="form-control" value="{{ $products->product_size_ban }}" data-role="tagsinput" required="">
-                                                        @error('product_size_hin')
+                                                        @error('product_size_ban')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
@@ -286,7 +286,7 @@
                                                     <h5>Product Color Ban <span class="text-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="product_color_ban" class="form-control" value="{{ $products->product_color_ban }}" data-role="tagsinput" required="">
-                                                        @error('product_color_hin')
+                                                        @error('product_color_ban')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>

@@ -114,7 +114,6 @@ class ProductController extends Controller
 
         $multiImgs = MultiImg::where('product_id',$id)->get();
 
-
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
         $subcategory = SubCategory::latest()->get();
@@ -122,6 +121,18 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
         return view('backend.product.product_edit',compact('categories','brands','subcategory','subsubcategory','products','multiImgs'));
 
+    }
+
+    // Product Details
+    public function DetailsProduct($id){
+        $multiImgs = MultiImg::where('product_id',$id)->get();
+
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $subcategory = SubCategory::latest()->get();
+        $subsubcategory = SubSubCategory::latest()->get();
+        $products = Product::findOrFail($id);
+        return view('backend.product.product_details',compact('categories','brands','subcategory','subsubcategory','products','multiImgs'));
     }
 
 
@@ -135,25 +146,25 @@ class ProductController extends Controller
             'subcategory_id' => $request->subcategory_id,
             'subsubcategory_id' => $request->subsubcategory_id,
             'product_name_en' => $request->product_name_en,
-            'product_name_hin' => $request->product_name_hin,
+            'product_name_ban' => $request->product_name_ban,
             'product_slug_en' =>  strtolower(str_replace(' ', '-', $request->product_name_en)),
-            'product_slug_hin' => str_replace(' ', '-', $request->product_name_hin),
+            'product_slug_ban' => str_replace(' ', '-', $request->product_name_ban),
             'product_code' => $request->product_code,
 
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,
-            'product_tags_hin' => $request->product_tags_hin,
+            'product_tags_ban' => $request->product_tags_ban,
             'product_size_en' => $request->product_size_en,
-            'product_size_hin' => $request->product_size_hin,
+            'product_size_ban' => $request->product_size_ban,
             'product_color_en' => $request->product_color_en,
-            'product_color_hin' => $request->product_color_hin,
+            'product_color_ban' => $request->product_color_ban,
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp_en' => $request->short_descp_en,
-            'short_descp_hin' => $request->short_descp_hin,
+            'short_descp_ban' => $request->short_descp_ban,
             'long_descp_en' => $request->long_descp_en,
-            'long_descp_hin' => $request->long_descp_hin,
+            'long_descp_ban' => $request->long_descp_ban,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
