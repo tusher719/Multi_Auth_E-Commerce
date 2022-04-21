@@ -27,7 +27,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Brand</h3>
+                            <h3 class="box-title">Edit Brand</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -57,7 +57,12 @@
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <img class="card-img-top" id="showImage" src="{{ (!empty($brand->brand_image)) ? url('uploads/brand/'.$brand->brand_image) : url('uploads/no_image.jpg') }}" style="border-radius: 50%; height: 150px; width: 150px; object-fit: cover;">
+                                    <div class="form-group">
+                                        <h5>Preview Image</h5>
+                                        <div class="input-group mb-3">
+                                            <img class="card-img-top" src="{{ asset($brand->brand_image) }}" style="border-radius: 5px; height: 150px; width: 180px; object-fit: cover;">
+                                        </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <h5>Brand Image</h5>
@@ -69,7 +74,7 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <img class="card-img-top" id="showImage" src="{{ (!empty($brand->brand_image)) ? url('uploads/no_image.jpg/') : url('uploads/no_image.jpg') }}" style="border-radius: 3px; height: 100px; width: 100px; object-fit: cover;">
+                                        <img class="card-img-top" id="showImage" src="{{ (!empty($brand->brand_image)) ? url('uploads/no_image.jpg/') : url('uploads/no_image.jpg') }}" style="border-radius: 3px; height: 150px; width: 180px; object-fit: cover;">
                                     </div>
 
                                     <div class="text-xs-right">

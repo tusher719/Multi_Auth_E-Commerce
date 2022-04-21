@@ -11,8 +11,9 @@ class BrandController extends Controller
 {
     // Brand View
     public function BrandView(){
-        $brands = Brand::latest()->get();
-        return view('backend.brand.brand_view', compact('brands'));
+        $brand_total = Brand::count();
+        $brands = Brand::orderBy('brand_name_en')->get();
+        return view('backend.brand.brand_view', compact('brand_total','brands'));
     } // End Method
 
 
