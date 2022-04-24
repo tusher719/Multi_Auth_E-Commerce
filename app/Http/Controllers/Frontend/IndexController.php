@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\MultiImg;
 use App\Models\Product;
@@ -23,7 +24,80 @@ class IndexController extends Controller
         $hot_deals = Product::where('hot_deals',1)->orderBy('id','DESC')->limit(3)->get();
         $speciel_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(6)->get();
         $speciel_deals = Product::where('special_deals',1)->orderBy('id','DESC')->limit(6)->get();
-        return view('frontend.index', compact('categories','sliders','products','freatured','hot_deals','speciel_offer','speciel_deals'));
+
+
+        // Skip Category Wish
+        $skip_category_0 = Category::skip(0)->first();
+        $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
+
+        $skip_category_1 = Category::skip(1)->first();
+        $skip_product_1 = Product::where('status',1)->where('category_id',$skip_category_1->id)->orderBy('id','DESC')->get();
+
+        $skip_category_2 = Category::skip(2)->first();
+        $skip_product_2 = Product::where('status',1)->where('category_id',$skip_category_2->id)->orderBy('id','DESC')->get();
+
+        $skip_category_3 = Category::skip(3)->first();
+        $skip_product_3 = Product::where('status',1)->where('category_id',$skip_category_3->id)->orderBy('id','DESC')->get();
+
+        $skip_category_4 = Category::skip(4)->first();
+        $skip_product_4 = Product::where('status',1)->where('category_id',$skip_category_4->id)->orderBy('id','DESC')->get();
+
+
+        // Skip Brand Wish
+        $skip_brand_0 = Brand::skip(0)->first();
+        $skip_brand_product_0 = Product::where('status',1)->where('brand_id',$skip_brand_0->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_1 = Brand::skip(1)->first();
+        $skip_brand_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_1->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_2 = Brand::skip(2)->first();
+        $skip_brand_product_2 = Product::where('status',1)->where('brand_id',$skip_brand_2->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_3 = Brand::skip(3)->first();
+        $skip_brand_product_3 = Product::where('status',1)->where('brand_id',$skip_brand_3->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_4 = Brand::skip(4)->first();
+        $skip_brand_product_4 = Product::where('status',1)->where('brand_id',$skip_brand_4->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_5 = Brand::skip(5)->first();
+        $skip_brand_product_5 = Product::where('status',1)->where('brand_id',$skip_brand_5->id)->orderBy('id','DESC')->get();
+
+        $skip_brand_6 = Brand::skip(6)->first();
+        $skip_brand_product_6 = Product::where('status',1)->where('brand_id',$skip_brand_6->id)->orderBy('id','DESC')->get();
+
+        return view('frontend.index', [
+            'sliders' => $sliders,
+            'products' => $products,
+            'categories' => $categories,
+            'freatured' => $freatured,
+            'hot_deals' => $hot_deals,
+            'speciel_offer' => $speciel_offer,
+            'speciel_deals' => $speciel_deals,
+            'skip_category_0' => $skip_category_0,
+            'skip_product_0' => $skip_product_0,
+            'skip_category_1' => $skip_category_1,
+            'skip_product_1' => $skip_product_1,
+            'skip_category_2' => $skip_category_2,
+            'skip_product_2' => $skip_product_2,
+            'skip_category_3' => $skip_category_3,
+            'skip_product_3' => $skip_product_3,
+            'skip_category_4' => $skip_category_4,
+            'skip_product_4' => $skip_product_4,
+            'skip_brand_0' => $skip_brand_0,
+            'skip_brand_product_0' => $skip_brand_product_0,
+            'skip_brand_1' => $skip_brand_1,
+            'skip_brand_product_1' => $skip_brand_product_1,
+            'skip_brand_2' => $skip_brand_2,
+            'skip_brand_product_2' => $skip_brand_product_2,
+            'skip_brand_3' => $skip_brand_3,
+            'skip_brand_product_3' => $skip_brand_product_3,
+            'skip_brand_4' => $skip_brand_4,
+            'skip_brand_product_4' => $skip_brand_product_4,
+            'skip_brand_5' => $skip_brand_5,
+            'skip_brand_product_5' => $skip_brand_product_5,
+            'skip_brand_6' => $skip_brand_6,
+            'skip_brand_product_6' => $skip_brand_product_6,
+            ]);
     }
 
     // Logout
