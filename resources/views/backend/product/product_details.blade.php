@@ -314,7 +314,7 @@
                                             <img class="img-rounded" src="{{ asset($img->photo_name) }}" class="card-img-top" style="height: auto; width: auto; object-fit: cover;">
                                         </div>
 
-                                    </div><!--  end col md 3		 -->
+                                    </div><!--  end col md 3  -->
                                 @endforeach
 
                             </div>
