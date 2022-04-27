@@ -31,9 +31,11 @@
                                 @foreach($subcategories as $subcategory)
                                     <div class="col-sm-12 col-md-3">
 
-                                        <h2 class="title">
-                                            @if(session()->get('language') == 'bangla') {{ $subcategory->subcategory_name_ban }} @else {{ $subcategory->subcategory_name_en }} @endif
-                                        </h2>
+                                        <a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}" style="padding: 0;">
+                                            <h2 class="title">
+                                                @if(session()->get('language') == 'bangla') {{ $subcategory->subcategory_name_ban }} @else {{ $subcategory->subcategory_name_en }} @endif
+                                            </h2>
+                                        </a>
 
                                         <!-- Get SubSubCategory Table Data -->
                                         @php
@@ -41,7 +43,14 @@
                                         @endphp
                                         @foreach($subsubcategories as $subsubcategory)
                                             <ul class="links list-unstyled">
-                                                <li><a href="#">@if(session()->get('language') == 'bangla') {{ $subsubcategory->subsubcategory_name_ban }} @else {{ $subsubcategory->subsubcategory_name_en }} @endif</a></li>
+                                                <li><a href="{{ url('subsubcategory/product/'.$subsubcategory->id.'/'.$subsubcategory->subsubcategory_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $subsubcategory->subsubcategory_name_ban }}
+                                                        @else
+                                                            {{ $subsubcategory->subsubcategory_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </li>
                                             </ul>
                                     @endforeach <!-- End SubSubCategory Foreach -->
                                     </div>

@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-    Tag Wise Product | Easy Online Shop
+    Sub - SubCategory Product | Easy Online Shop
 @endsection
 
 <div class="breadcrumb">
@@ -24,7 +24,7 @@
             <div class='col-md-3 sidebar'>
                 <!-- ================================== TOP NAVIGATION ================================== -->
             @include('frontend.common.vertical_menu')
-                <!-- ================================== TOP NAVIGATION : END ================================== -->
+            <!-- ================================== TOP NAVIGATION : END ================================== -->
                 <div class="sidebar-module-container">
                     <div class="sidebar-filter">
                         <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
@@ -55,7 +55,7 @@
 
                                                     @foreach($subcategories as $subcategory)
                                                         <ul>
-                                                            <li><a href="#">
+                                                            <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en) }}">
                                                                     @if(session()->get('language') == 'bangla')
                                                                         {{ $subcategory->subcategory_name_ban }}
                                                                     @else
@@ -69,8 +69,8 @@
                                             </div>
                                             <!-- /.accordion-body -->
                                         </div>
-                                    @endforeach
-                                    <!-- /.accordion-group -->
+                                @endforeach
+                                <!-- /.accordion-group -->
 
                                 </div>
                                 <!-- /.accordion -->
@@ -150,13 +150,13 @@
                         <!-- ============================================== COMPARE: END ============================================== -->
                         <!-- ============================================== PRODUCT TAGS ============================================== -->
 
-                        @include('frontend.common.product_tags')
+                    @include('frontend.common.product_tags')
 
-                        <!-- /.sidebar-widget -->
+                    <!-- /.sidebar-widget -->
                         <!----------- Testimonials------------->
-                        @include('frontend.common.testimonials')
+                    @include('frontend.common.testimonials')
 
-                        <!-- ============================================== Testimonials: END ============================================== -->
+                    <!-- ============================================== Testimonials: END ============================================== -->
 
                         <div class="home-banner"> <img src="{{ asset('frontend') }}/assets/images/banners/LHS-banner.jpg" alt="Image"> </div>
                     </div>
@@ -311,7 +311,7 @@
                                                                 </span>
                                                             </div>
                                                     @endif
-                                                        <!-- /.product-price -->
+                                                    <!-- /.product-price -->
 
                                                     </div>
                                                     <!-- /.product-info -->
@@ -388,9 +388,9 @@
                                                                         $ {{ $product->selling_price }}
                                                                     </span>
                                                                 </div>
-                                                            @endif
+                                                        @endif
 
-                                                            <!-- /.product-price -->
+                                                        <!-- /.product-price -->
                                                             <div class="description m-t-10">
                                                                 @if(session()->get('language') == 'bangla')
                                                                     {{ $product->short_descp_ban }}
@@ -467,7 +467,6 @@
         <!-- /.row -->
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
         @include('frontend.body.brands')
-        <!-- /.logo-slider -->
         <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> </div>
     <!-- /.container -->
 
