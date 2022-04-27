@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use phpDocumentor\Reflection\DocBlock\Tag;
 
 class IndexController extends Controller
 {
@@ -168,8 +169,21 @@ class IndexController extends Controller
 
 
     public function ProductDetails($id, $slug){
+        $categories = Category::orderBy('category_name_en','ASC')->get();
         $product = Product::findOrFail($id);
         $multiImg = MultiImg::where('product_id', $id)->get();
-        return view('frontend.product.product_details', compact('product','multiImg'));
+        return view('frontend.product.product_details', compact('categories','product','multiImg'));
     }
+
+
+    // Tag Method
+    public function TagWiseProduct($tag){
+        $products = Product::where('status',1)->where('product_tags_en', $tag)->where('product_tags_ban', $tag)->orderBy('id','DESC')->paginate(6);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+        return view('frontend.tags.tags_view', compact('products','categories'));
+    }
+
+
+
+
 }
