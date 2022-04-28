@@ -376,6 +376,44 @@
                                         </div><!-- /.row -->
                                     </div><!-- /.price-container -->
 
+                                    <!-- Add Product Color And Product Size : Start -->
+                                    <div class="m-t-20">
+                                        <div class="row">
+
+
+                                            <div class="col-sm-6">
+
+
+                                                <div class="form-group">
+                                                    <label class="info-title control-label">Chose Color <span> </span></label>
+                                                    <select class="form-control unicase-form-control selectpicker" style="display: none;">
+                                                        <option selected disabled>--Chose Color--</option>
+                                                        @foreach($product_color_en as $color)
+                                                            <option value="{{ $color }}">{{ $color }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> <!-- End Form Group -->
+
+                                            </div> <!-- End Col 6 -->
+
+                                            <div class="col-sm-6">
+
+                                                <div class="form-group">
+                                                    <label class="info-title control-label">Chose Size <span> </span></label>
+                                                    <select class="form-control unicase-form-control selectpicker" style="display: none;">
+                                                        <option selected disabled>--Chose Size--</option>
+                                                        @foreach($product_size_en as $size)
+                                                            <option value="{{ $size }}">{{ $size }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> <!-- End Form Group -->
+
+                                            </div> <!-- End Col 6 -->
+
+                                        </div> <!-- /.row -->
+                                    </div>
+                                    <!-- Add Product Color And Product Size : End -->
+
                                     <div class="quantity-container info-container">
                                         <div class="row">
 
