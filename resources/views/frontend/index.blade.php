@@ -16,76 +16,7 @@
                     <!-- ================================== TOP NAVIGATION : END ================================== -->
 
                     <!-- ============================================== HOT DEALS ============================================== -->
-                    <div class="sidebar-widget hot-deals wow fadeInUp outer-bottom-xs">
-                        <h3 class="section-title">hot deals</h3>
-                        <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
-
-                            @foreach($hot_deals as $product)
-                                <div class="item">
-                                <div class="products">
-                                    <div class="hot-deal-wrapper">
-                                        <div class="image"> <img src="{{ asset($product->product_thambnail) }}" alt=""> </div>
-
-                                        @php
-                                            $amount = $product->selling_price - $product->discount_price;
-                                            $discount = ($amount/$product->selling_price) * 100;
-                                        @endphp
-
-                                        @if($product->discount_price == NULL)
-                                            <div class="sale-offer-tag"><span>0%<br>off</span></div>
-                                        @else
-                                            <div class="sale-offer-tag"><span>{{ round($discount) }}%<br>off</span></div>
-                                        @endif
-
-
-                                        <div class="timing-wrapper">
-                                            <div class="box-wrapper">
-                                                <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
-                                            </div>
-                                            <div class="box-wrapper">
-                                                <div class="hour box"> <span class="key">20</span> <span class="value">HRS</span> </div>
-                                            </div>
-                                            <div class="box-wrapper">
-                                                <div class="minutes box"> <span class="key">36</span> <span class="value">MINS</span> </div>
-                                            </div>
-                                            <div class="box-wrapper hidden-md">
-                                                <div class="seconds box"> <span class="key">60</span> <span class="value">SEC</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.hot-deal-wrapper -->
-
-                                    <div class="product-info text-left m-t-20">
-                                        <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"> @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif </a></h3>
-                                        <div class="rating rateit-small"></div>
-
-                                        @if($product->discount_price == NULL)
-                                            <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
-                                        @else
-                                            <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
-                                        @endif
-                                        <!-- /.product-price -->
-
-                                    </div>
-                                    <!-- /.product-info -->
-
-                                    <div class="cart clearfix animate-effect">
-                                        <div class="action">
-                                            <div class="add-cart-button btn-group">
-                                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                            </div>
-                                        </div>
-                                        <!-- /.action -->
-                                    </div>
-                                    <!-- /.cart -->
-                                </div>
-                            </div>
-                            @endforeach
-
-                        </div>
-                        <!-- /.sidebar-widget -->
-                    </div>
+                    @include('frontend.common.hot_deals')
                     <!-- ============================================== HOT DEALS: END ============================================== -->
 
                     <!-- ============================================== SPECIAL OFFER ============================================== -->
@@ -114,9 +45,15 @@
                                                     <!-- /.col -->
                                                     <div class="col col-xs-7">
                                                         <div class="product-info">
-                                                            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                                    @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                                </a></h3>
+                                                            <h3 class="name">
+                                                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                                    @if(session()->get('language') == 'bangla')
+                                                                        {{ $product->product_name_ban }}
+                                                                    @else
+                                                                        {{ $product->product_name_en }}
+                                                                    @endif
+                                                                </a>
+                                                            </h3>
                                                             <div class="rating rateit-small"></div>
 
                                                             @if($product->discount_price == NULL)
@@ -168,7 +105,11 @@
                                                 <div class="row product-micro-row">
                                                     <div class="col col-xs-5">
                                                         <div class="product-image">
-                                                            <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"> <img src="{{ asset($product->product_thambnail) }}"  alt=""> </a> </div>
+                                                            <div class="image">
+                                                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                                    <img src="{{ asset($product->product_thambnail) }}"  alt="">
+                                                                </a>
+                                                            </div>
                                                             <!-- /.image -->
 
                                                         </div>
@@ -177,15 +118,24 @@
                                                     <!-- /.col -->
                                                     <div class="col col-xs-7">
                                                         <div class="product-info">
-                                                            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                                    @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                            <h3 class="name">
+                                                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                                    @if(session()->get('language') == 'bangla')
+                                                                        {{ $product->product_name_ban }}
+                                                                    @else
+                                                                        {{ $product->product_name_en }}
+                                                                    @endif
                                                                 </a></h3>
                                                             <div class="rating rateit-small"></div>
 
                                                             @if($product->discount_price == NULL)
-                                                                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                                <div class="product-price">
+                                                                    <span class="price"> ${{ $product->selling_price }} </span>
+                                                                </div>
                                                             @else
-                                                                <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> </div>
+                                                                <div class="product-price">
+                                                                    <span class="price"> ${{ $product->discount_price }} </span>
+                                                                </div>
                                                             @endif
                                                             <!-- /.product-price -->
 
@@ -233,7 +183,9 @@
 
                     <!-- ============================================== Testimonials: END ============================================== -->
 
-                    <div class="home-banner"> <img src="{{ asset('frontend') }}/assets/images/banners/LHS-banner.jpg" alt="Image"> </div>
+                    <div class="home-banner">
+                        <img src="{{ asset('frontend') }}/assets/images/banners/LHS-banner.jpg" alt="Image">
+                    </div>
                 </div>
                 <!-- /.sidemenu-holder -->
                 <!-- ============================================== SIDEBAR : END ============================================== -->
@@ -252,7 +204,9 @@
                                             <div class="slider-header fadeInDown-1">Top Brands</div>
                                             <div class="big-text fadeInDown-1"> {{ $slider->title }} </div>
                                             <div class="excerpt fadeInDown-2 hidden-xs"> <span> {{ $slider->description }} </span> </div>
-                                            <div class="button-holder fadeInDown-3"> <a href="index.php?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a> </div>
+                                            <div class="button-holder fadeInDown-3">
+                                                <a href="index.php?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a>
+                                            </div>
                                         </div>
                                         <!-- /.caption -->
                                     </div>
@@ -325,7 +279,11 @@
                                 <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
 
                                 @foreach($categories as $category)
-                                    <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+                                    <li>
+                                        <a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">
+                                            {{ $category->category_name_en }}
+                                        </a>
+                                    </li>
                                 @endforeach
 
 {{--                                <li><a data-transition-type="backSlide" href="#laptop" data-toggle="tab">Electronics</a></li>--}}
@@ -387,12 +345,8 @@
                                                             </div>
                                                         @else
                                                             <div class="product-price">
-                                                                <span class="price">
-                                                                    ${{ $product->discount_price }}
-                                                                </span>
-                                                                <span class="price-before-discount">
-                                                                    $ {{ $product->selling_price }}
-                                                                </span>
+                                                                <span class="price"> ${{ $product->discount_price }} </span>
+                                                                <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
                                                             </div>
                                                         @endif
                                                         <!-- /.product-price -->
@@ -444,7 +398,11 @@
                                                     <div class="products">
                                                         <div class="product">
                                                             <div class="product-image">
-                                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                                <div class="image">
+                                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                                    </a>
+                                                                </div>
                                                                 <!-- /.image -->
 
                                                                 @php
@@ -456,7 +414,9 @@
                                                                     @if($product->discount_price == NULL)
                                                                         <div class="tag new"><span>new</span></div>
                                                                     @else
-                                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                                        <div class="tag hot">
+                                                                            <span>{{ round($discount) }}%</span>
+                                                                        </div>
                                                                     @endif
                                                                 </div>
 
@@ -464,16 +424,28 @@
                                                             <!-- /.product-image -->
 
                                                             <div class="product-info text-left">
-                                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">@if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                                    </a></h3>
+                                                                <h3 class="name">
+                                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                                        @if(session()->get('language') == 'bangla')
+                                                                            {{ $product->product_name_ban }}
+                                                                        @else
+                                                                            {{ $product->product_name_en }}
+                                                                        @endif
+                                                                    </a>
+                                                                </h3>
                                                                 <div class="rating rateit-small"></div>
                                                                 <div class="description"></div>
 
 
                                                                 @if($product->discount_price == NULL)
-                                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                                    <div class="product-price">
+                                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                                    </div>
                                                                 @else
-                                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                                    <div class="product-price">
+                                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                                        <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
+                                                                    </div>
                                                             @endif
                                                                 <!-- /.product-price -->
 
@@ -524,14 +496,18 @@
                         <div class="row">
                             <div class="col-md-7 col-sm-7">
                                 <div class="wide-banner cnt-strip">
-                                    <div class="image"> <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner1.jpg" alt=""> </div>
+                                    <div class="image">
+                                        <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner1.jpg" alt="">
+                                    </div>
                                 </div>
                                 <!-- /.wide-banner -->
                             </div>
                             <!-- /.col -->
                             <div class="col-md-5 col-sm-5">
                                 <div class="wide-banner cnt-strip">
-                                    <div class="image"> <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner2.jpg" alt=""> </div>
+                                    <div class="image">
+                                        <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner2.jpg" alt="">
+                                    </div>
                                 </div>
                                 <!-- /.wide-banner -->
                             </div>
@@ -551,7 +527,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -563,7 +543,7 @@
                                                     @if($product->discount_price == NULL)
                                                         <div class="tag new"><span>new</span></div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot"><span> {{ round($discount) }}% </span></div>
                                                     @endif
                                                 </div>
 
@@ -571,17 +551,28 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">@if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-                                            @endif
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
+                                                @endif
                                             <!-- /.product-price -->
 
                                             </div>
@@ -621,7 +612,11 @@
                     <!-- ========== Skip_category_0 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_category_0->category_name_ban }} @else {{ $skip_category_0->category_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_category_0->category_name_ban }}
+                            @else
+                                {{ $skip_category_0->category_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_product_0 as $product)
@@ -629,7 +624,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -649,18 +648,29 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                    </a></h3>
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-                                            @endif
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
+                                                    </div>
+                                                @endif
                                             <!-- /.product-price -->
 
                                             </div>
@@ -698,7 +708,11 @@
                     <!-- ========== Skip_category_1 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_category_1->category_name_ban }} @else {{ $skip_category_1->category_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_category_1->category_name_ban }}
+                            @else
+                                {{ $skip_category_1->category_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_product_1 as $product)
@@ -706,7 +720,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -716,9 +734,9 @@
 
                                                 <div>
                                                     @if($product->discount_price == NULL)
-                                                        <div class="tag new"><span>new</span></div>
+                                                        <div class="tag new"> <span> new </span> </div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot"> <span> {{ round($discount) }}% </span> </div>
                                                     @endif
                                                 </div>
 
@@ -726,9 +744,15 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                    </a></h3>
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
@@ -736,7 +760,8 @@
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount"> $ {{ $product->selling_price }}</span> </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -775,7 +800,11 @@
                     <!-- ========== Skip_category_2 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_category_2->category_name_ban }} @else {{ $skip_category_2->category_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_category_2->category_name_ban }}
+                            @else
+                                {{ $skip_category_2->category_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_product_2 as $product)
@@ -783,7 +812,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -795,7 +828,7 @@
                                                     @if($product->discount_price == NULL)
                                                         <div class="tag new"><span>new</span></div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot"><span> {{ round($discount) }}% </span></div>
                                                     @endif
                                                 </div>
 
@@ -804,16 +837,24 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -872,7 +913,9 @@
                                                     @if($product->discount_price == NULL)
                                                         <div class="tag new"><span>new</span></div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot">
+                                                            <span> {{ round($discount) }}% </span>
+                                                        </div>
                                                     @endif
                                                 </div>
 
@@ -881,16 +924,25 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount"> $ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -929,7 +981,11 @@
                     <!-- ========== Skip_category_4 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_category_4->category_name_ban }} @else {{ $skip_category_4->category_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_category_4->category_name_ban }}
+                            @else
+                                {{ $skip_category_4->category_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_product_4 as $product)
@@ -937,7 +993,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -958,16 +1018,25 @@
 
                                             <div class="product-info text-left">
                                                 <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1008,7 +1077,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="wide-banner cnt-strip">
-                                    <div class="image"> <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner.jpg" alt=""> </div>
+                                    <div class="image">
+                                        <img class="img-responsive" src="{{ asset('frontend') }}/assets/images/banners/home-banner.jpg" alt="">
+                                    </div>
                                     <div class="strip strip-text">
                                         <div class="strip-inner">
                                             <h2 class="text-right">New Mens Fashion<br>
@@ -1034,7 +1105,11 @@
                     <!-- ========== Skip_brand_0 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_0->brand_name_ban }} @else {{ $skip_brand_0->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_0->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_0->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_0 as $product)
@@ -1042,7 +1117,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1052,9 +1131,11 @@
 
                                                 <div>
                                                     @if($product->discount_price == NULL)
-                                                        <div class="tag new"><span>new</span></div>
+                                                        <div class="tag new"> <span>new</span> </div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot">
+                                                            <span> {{ round($discount) }}% </span>
+                                                        </div>
                                                     @endif
                                                 </div>
 
@@ -1062,17 +1143,28 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                    </a></h3>
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1111,7 +1203,11 @@
                     <!-- ========== Skip_brand_1 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_1->brand_name_ban }} @else {{ $skip_brand_1->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_1->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_1->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_1 as $product)
@@ -1119,7 +1215,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1131,7 +1231,9 @@
                                                     @if($product->discount_price == NULL)
                                                         <div class="tag new"><span>new</span></div>
                                                     @else
-                                                        <div class="tag hot"><span>{{ round($discount) }}%</span></div>
+                                                        <div class="tag hot">
+                                                            <span>{{ round($discount) }}%</span>
+                                                        </div>
                                                     @endif
                                                 </div>
 
@@ -1139,17 +1241,28 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                    </a></h3>
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1188,7 +1301,11 @@
                     <!-- ========== Skip_brand_2 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_2->brand_name_ban }} @else {{ $skip_brand_2->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_2->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_2->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_2 as $product)
@@ -1196,7 +1313,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1216,17 +1337,27 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1265,7 +1396,11 @@
                     <!-- ========== Skip_brand_3 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_3->brand_name_ban }} @else {{ $skip_brand_3->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_3->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_3->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_3 as $product)
@@ -1273,7 +1408,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1293,18 +1432,28 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
-                                            @endif
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
+                                                @endif
                                             <!-- /.product-price -->
 
                                             </div>
@@ -1342,7 +1491,11 @@
                     <!-- ========== Skip_brand_4 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_4->brand_name_ban }} @else {{ $skip_brand_4->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_4->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_4->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_4 as $product)
@@ -1350,7 +1503,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1370,17 +1527,27 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1419,7 +1586,11 @@
                     <!-- ========== Skip_brand_5 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_5->brand_name_ban }} @else {{ $skip_brand_5->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_5->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_5->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_5 as $product)
@@ -1427,7 +1598,11 @@
                                     <div class="products">
                                         <div class="product">
                                             <div class="product-image">
-                                                <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thambnail) }}" alt=""></a> </div>
+                                                <div class="image">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        <img  src="{{ asset($product->product_thambnail) }}" alt="">
+                                                    </a>
+                                                </div>
                                                 <!-- /.image -->
 
                                                 @php
@@ -1447,17 +1622,27 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
                                                     </a></h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -1496,7 +1681,11 @@
                     <!-- ========== Skip_brand_6 PRODUCTS Start ========== -->
                     <section class="section featured-product wow fadeInUp">
                         <h3 class="section-title">
-                            @if(session()->get('language') == 'bangla') {{ $skip_brand_6->brand_name_ban }} @else {{ $skip_brand_6->brand_name_en }} @endif
+                            @if(session()->get('language') == 'bangla')
+                                {{ $skip_brand_6->brand_name_ban }}
+                            @else
+                                {{ $skip_brand_6->brand_name_en }}
+                            @endif
                         </h3>
                         <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                             @foreach($skip_brand_product_6 as $product)
@@ -1524,17 +1713,28 @@
                                             <!-- /.product-image -->
 
                                             <div class="product-info text-left">
-                                                <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
-                                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif
-                                                    </a></h3>
+                                                <h3 class="name">
+                                                    <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                        @if(session()->get('language') == 'bangla')
+                                                            {{ $product->product_name_ban }}
+                                                        @else
+                                                            {{ $product->product_name_en }}
+                                                        @endif
+                                                    </a>
+                                                </h3>
                                                 <div class="rating rateit-small"></div>
                                                 <div class="description"></div>
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                    </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price">
+                                                        <span class="price"> ${{ $product->discount_price }} </span>
+                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    </div>
                                             @endif
                                             <!-- /.product-price -->
 
