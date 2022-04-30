@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
@@ -103,5 +104,162 @@
         });
     });
 </script>
+
+
+<!-- Add to Cart Product Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <strong> <span id="pname"></span> </strong>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="card">
+                            <img src="" id="pimage" class="card-img-top" alt="..." style="height: 200px; width: 200px; object-fit: cover">
+                        </div>
+
+                    </div> <!-- End col md -->
+                    <div class="col-md-4">
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <strong>Product:</strong>
+                                <strong class="text-primary">
+                                    $ <span id="pprice"></span>
+                                </strong>
+                                <del class="text-danger" id="oldprice"> </del>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Product Code:</strong> <span id="pcode"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Category:</strong> <span id="pcategory"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Brand:</strong> <span id="pbrand"></span>
+                            </li>
+                            <li class="list-group-item">
+                                <strong>Stock:</strong>
+                                <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: #fff;"></span>
+                                <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: #fff;"></span>
+                            </li>
+                        </ul>
+
+                    </div> <!-- End col md -->
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Chose Color:</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="color">
+
+                            </select>
+                        </div> <!-- End Form Group -->
+
+
+                        <div class="form-group" id="sizeArea">
+                            <label for="exampleFormControlSelect1">Chose Size:</label>
+                            <select class="form-control" id="exampleFormControlSelect1" name="size">
+
+                            </select>
+                        </div> <!-- End Form Group -->
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Quantity:</label>
+                            <input type="text" class="form-control" value="1" min="1">
+                        </div> <!-- End Form Group -->
+
+                    </div> <!-- End col md -->
+                    <div class="col-md-12">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary mb-2"> Add to Card</button>
+                        </div>
+                    </div> <!-- End col md -->
+                </div>
+
+            </div> <!-- End Body -->
+        </div>
+    </div>
+</div>
+<!-- Add to Cart Product Modal : End -->
+
+<script type="text/javascript">
+    $.ajexSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
+    })
+
+    // Start Product View with Modal
+    function productView(id) {
+        $.ajax({
+            type: 'GET',
+            url: '/product/view/modal/'+id,
+            dataType: 'json',
+            success: function (data) {
+                // console.log(data)
+                $('#pname').text(data.product.product_name_en);
+                $('#price').text(data.product.selling_price);
+                $('#pcode').text(data.product.product_code);
+                $('#pcategory').text(data.product.category.category_name_en);
+                $('#pbrand').text(data.product.brands.brand_name_en);
+                $('#pimage').attr('src','/'+data.product.product_thambnail);
+
+                // Product Price
+                if (data.product.discount_price == null) {
+                    $('#pprice').text('');
+                    $('#oldprice').text('');
+                    $('#pprice').text(data.product.selling_price);
+                } else {
+                    $('#pprice').text(data.product.discount_price);
+                    $('#oldprice').text(data.product.selling_price);
+                }
+
+                // Start Stock Option
+                if (data.product.product_qty > 0) {
+                    $('#aviable').text('');
+                    $('#stockout').text('');
+                    $('#aviable').text('Aviable');
+                } else {
+                    $('#aviable').text('');
+                    $('#stockout').text('');
+                    $('#stockout').text('StockOut');
+                }
+
+                // Color
+                $('select[name="color"]').empty();
+                $.each(data.color, function (key,value) {
+                    $('select[name="color"]').append('<option value=" '+value+' "> '+value+' </option>')
+                })
+
+                // Size
+                $('select[name="size"]').empty();
+                $.each(data.size, function (key,value) {
+                    $('select[name="size"]').append('<option value=" '+value+' "> '+value+' </option>')
+                })
+
+                if (data.size == "") {
+                    $('#sizeArea').hide();
+                } else {
+                    $('#sizeArea').show();
+                }
+            }
+        })
+    }
+
+</script>
+
+
 </body>
 </html>

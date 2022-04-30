@@ -235,9 +235,9 @@
                                             <div class="col-md-4">
 
                                                 <div class="form-group">
-                                                    <h5>Product Size En <span class="text-danger">*</span></h5>
+                                                    <h5>Product Size En <span class="txt-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput" required="">
+                                                        <input type="text" name="product_size_en" class="form-control" value="{{ $products->product_size_en }}" data-role="tagsinput">
                                                         @error('product_size_en')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -250,9 +250,9 @@
                                             <div class="col-md-4">
 
                                                 <div class="form-group">
-                                                    <h5>Product Size Ban <span class="text-danger">*</span></h5>
+                                                    <h5>Product Size Ban <span class="txt-danger">*</span></h5>
                                                     <div class="controls">
-                                                        <input type="text" name="product_size_ban" class="form-control" value="{{ $products->product_size_ban }}" data-role="tagsinput" required="">
+                                                        <input type="text" name="product_size_ban" class="form-control" value="{{ $products->product_size_ban }}" data-role="tagsinput">
                                                         @error('product_size_ban')
                                                         <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -324,7 +324,7 @@
                                             <div class="col-md-6">
 
                                                 <div class="form-group">
-                                                    <h5>Product Discount Price</h5>
+                                                    <h5>Product Discount Price  <span class="txt-danger">*</span></h5>
                                                     <div class="controls">
                                                         <input type="text" name="discount_price" class="form-control" value="{{ $products->discount_price }}">
                                                         @error('discount_price')
