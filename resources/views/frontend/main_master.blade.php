@@ -110,81 +110,131 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                    <strong> <span id="pname"></span> </strong>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-right" style="margin-bottom: 5px">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 30px">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-lg-5 col-md-6 col-sm-6">
 
                         <div class="card">
-                            <img src="" id="pimage" class="card-img-top" alt="..." style="height: 200px; width: 200px; object-fit: cover">
+                            <img src="" id="pimage" class="card-img-top" alt="..." style="height: 350px; width: 350px; object-fit: cover; border: 1px solid #aaa;">
                         </div>
 
                     </div> <!-- End col md -->
-                    <div class="col-md-4">
+                    <div class="col-lg-7 col-md-6 col-sm-6">
 
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <strong>Product:</strong>
-                                <strong class="text-primary">
-                                    $ <span id="pprice"></span>
-                                </strong>
-                                <del class="text-danger" id="oldprice"> </del>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Product Code:</strong> <span id="pcode"></span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Category:</strong> <span id="pcategory"></span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Brand:</strong> <span id="pbrand"></span>
-                            </li>
-                            <li class="list-group-item">
-                                <strong>Stock:</strong>
-                                <span class="badge badge-pill badge-success" id="aviable" style="background: green; color: #fff;"></span>
-                                <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: #fff;"></span>
-                            </li>
-                        </ul>
+                        <div class="">
+                            <!-- Product Name -->
+                            <h4 class="modal-title" id="exampleModalLabel">
+                                <strong> <span id="pname"></span> </strong>
+                            </h4>
 
-                    </div> <!-- End col md -->
-                    <div class="col-md-4">
+                            <!-- Product Rating -->
+                            <div class="rateit-small m-t-10" style="display: flex;">
+                                <button id="rateit-reset-5" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-5" style="display: none;"></button>
+                                <div id="rateit-range-5" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-5" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;">
+                                    <div class="rateit-selected" style="height: 14px; width: 56px;"></div>
+                                </div> <span style="font-size: 12px; color: grey; margin-top: -2px">(15 Review)</span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Chose Color:</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="color">
+                            <div class="product-list-in-box m-t-10">
+                                <span class="font-size-14" style="font-size: 14px; font-weight: 700">Stock:</span>
+                                <span class="badge badge-pill badge-success" id="aviable" style="background: #4caf50; color: #fff;"></span>
+                                <span class="badge badge-pill badge-danger" id="stockout" style="background: #ff7878; color: #fff;"></span>
+                            </div>
 
-                            </select>
-                        </div> <!-- End Form Group -->
+                            <!-- Product Price -->
+                            <div class="price-box">
+                                <span class="price" style="color: #ff5722; font-size: 30px; font-weight: 700; line-height: 50px;">
+                                    $<span id="pprice"></span>
+                                </span>
+                                <span class="price-strike" id="oldprice" style="color: #aaa; font-size: 16px; font-weight: 400; line-height: 50px; text-decoration: line-through;"></span>
+                            </div>
+
+                            <!-- Product Description -->
+                            <div class="description-container m-t-10" style="font-size: 15px; line-height: 24px;">
+                                <span id="pdesp"></span>
+                            </div>
+                            <div class="info-container" style="border-bottom: 1px solid #e1e1e1; margin: 10px 0"></div>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Chose Color:</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" name="color">
+
+                                        </select>
+                                    </div> <!-- End Form Group -->
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="form-group" id="sizeArea">
+                                        <label for="exampleFormControlSelect1">Chose Size:</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" name="size">
+
+                                        </select>
+                                    </div> <!-- End Form Group -->
+                                </div>
+                            </div>
+
+                            <div class="info-container" style="border-bottom: 1px solid #e1e1e1; margin: 10px 0"></div>
+
+                            <!-- Add to cart -->
+                            <div class="row">
+
+                                <div class="col-sm-2">
+                                    <span class="label" style="font-size: 14px; color: #333; line-height: 34px; padding: 0;">Quantity :</span>
+                                </div>
+
+                                <div class="col-md-2 col-sm-2">
+                                    <div class="cart-quantity">
+                                        <div class="quant-input">
+                                            <input class="form-control" type="text" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-7 col-sm-7">
+                                    <a href="#" data-toggle="tooltip" title="Add To Cart" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                </div>
+
+                            </div><!-- /.row -->
+
+                            <div class="info-container" style="border-bottom: 1px solid #e1e1e1; margin: 10px 0"></div>
+
+                            <!-- Product Code, Category, Brand -->
+                            <div>
+                                <div class="product-list-in-box">
+                                    <span class="font-size-14" style="font-weight: 700">Product Code:</span> <span id="pcode" class="font-size-14"></span>
+                                </div>
+                                <div class="product-list-in-box">
+                                    <span class="font-size-14" style="font-weight: 700">Category:</span> <span id="pcategory" class="font-size-14"></span>
+                                </div>
+                                <div class="product-list-in-box">
+                                    <span class="font-size-14" style="font-weight: 700">Brand:</span> <span id="pbrand" class="font-size-14"></span>
+                                </div>
+                            </div>
+
+                            <div class="info-container" style="border-bottom: 1px solid #e1e1e1; margin: 10px 0"></div>
+
+                            <!-- Product Code, Category, Brand -->
+                            <div class="social" style="display: flex; align-items: center">
+                                <span class="font-size-16" style="font-weight: 700;">Share:</span>
+                                <ul class="link">
+                                    <li class="fb pull-left"><a target="_blank" href="#" data-toggle="tooltip" title="Facebook" style="background: transparent !important; color: #3C5B9B;"></a></li>
+                                    <li class="tw pull-left"><a target="_blank" href="#" data-toggle="tooltip" title="Twitter" style="background: transparent !important; color: #359BED;"></a></li>
+                                    <li class="linkedin pull-left"><a target="_blank" href="#" data-toggle="tooltip" title="Linkedin" style="background: transparent !important; color: #027ba5;"></a></li>
+                                    <li class="youtube pull-left"><a target="_blank" href="#" data-toggle="tooltip" title="Youtube" style="background: transparent !important; color: #F03434;"></a></li>
+                                </ul>
+                            </div>
 
 
-                        <div class="form-group" id="sizeArea">
-                            <label for="exampleFormControlSelect1">Chose Size:</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="size">
-
-                            </select>
-                        </div> <!-- End Form Group -->
-
-
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Quantity:</label>
-                            <input type="text" class="form-control" value="1" min="1">
-                        </div> <!-- End Form Group -->
-
-                    </div> <!-- End col md -->
-                    <div class="col-md-12">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-primary mb-2"> Add to Card</button>
                         </div>
+
                     </div> <!-- End col md -->
                 </div>
 
@@ -210,6 +260,7 @@
             success: function (data) {
                 // console.log(data)
                 $('#pname').text(data.product.product_name_en);
+                $('#pdesp').text(data.product.short_descp_en);
                 $('#price').text(data.product.selling_price);
                 $('#pcode').text(data.product.product_code);
                 $('#pcategory').text(data.product.category.category_name_en);
@@ -223,18 +274,18 @@
                     $('#pprice').text(data.product.selling_price);
                 } else {
                     $('#pprice').text(data.product.discount_price);
-                    $('#oldprice').text(data.product.selling_price);
+                    $('#oldprice').text('$ '+data.product.selling_price);
                 }
 
                 // Start Stock Option
                 if (data.product.product_qty > 0) {
                     $('#aviable').text('');
                     $('#stockout').text('');
-                    $('#aviable').text('Aviable');
+                    $('#aviable').text('In Stock');
                 } else {
                     $('#aviable').text('');
                     $('#stockout').text('');
-                    $('#stockout').text('StockOut');
+                    $('#stockout').text('Stock Out');
                 }
 
                 // Color
