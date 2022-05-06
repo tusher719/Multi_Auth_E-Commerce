@@ -64,8 +64,9 @@
 <script src="{{ asset('frontend') }}/assets/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/wow.min.js"></script>
 <script src="{{ asset('frontend') }}/assets/js/scripts.js"></script>
-
-<!-- toastr Script -->
+<!-- Sweetalert Toastr Script -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Toastr Script -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script type="text/javascript">
@@ -331,7 +332,36 @@
             url: "/cart/data/store/"+id,
             success:function (data) {
                 $('#closeModel').click();
-                console.log(data)
+                // console.log(data)
+
+                // Start Message
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        icon: 'success',
+                        title: data.success
+                    })
+                } else {
+                    Toast.fire({
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+
+                // End Message
             }
         })
 
