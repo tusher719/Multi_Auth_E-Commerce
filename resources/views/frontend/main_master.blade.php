@@ -113,7 +113,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 text-right" style="margin-bottom: 5px">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="font-size: 30px">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModel" style="font-size: 30px">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -136,7 +136,7 @@
                             </h4>
 
                             <!-- Product Rating -->
-                            <div class="rateit-small m-t-10" style="display: flex;">
+                            <div class="rateit-small m-t-10">
                                 <button id="rateit-reset-5" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-5" style="display: none;"></button>
                                 <div id="rateit-range-5" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-5" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4" aria-readonly="true" style="width: 70px; height: 14px;">
                                     <div class="rateit-selected" style="height: 14px; width: 56px;"></div>
@@ -165,16 +165,16 @@
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Chose Color:</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" name="color">
+                                        <label for="color">Chose Color:</label>
+                                        <select class="form-control" id="color" name="color">
 
                                         </select>
                                     </div> <!-- End Form Group -->
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="form-group" id="sizeArea">
-                                        <label for="exampleFormControlSelect1">Chose Size:</label>
-                                        <select class="form-control" id="exampleFormControlSelect1" name="size">
+                                        <label for="size">Chose Size:</label>
+                                        <select class="form-control" id="size" name="size">
 
                                         </select>
                                     </div> <!-- End Form Group -->
@@ -187,19 +187,20 @@
                             <div class="row">
 
                                 <div class="col-sm-2">
-                                    <span class="label" style="font-size: 14px; color: #333; line-height: 34px; padding: 0;">Quantity :</span>
+                                    <label class="label" for="qty" style="font-size: 14px; color: #333; line-height: 34px; padding: 0;">Quantity :</label>
                                 </div>
 
                                 <div class="col-md-2 col-sm-2">
                                     <div class="cart-quantity">
                                         <div class="quant-input">
-                                            <input class="form-control" type="text" value="1">
+                                            <input class="form-control" id="qty" type="number" value="1" min="1">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-7 col-sm-7">
-                                    <a href="#" data-toggle="tooltip" title="Add To Cart" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                    <input type="hidden" id="product_id">
+                                    <button type="submit" class="btn btn-primary" onclick="addToCart()"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
                                 </div>
 
                             </div><!-- /.row -->
@@ -245,7 +246,7 @@
 <!-- Add to Cart Product Modal : End -->
 
 <script type="text/javascript">
-    $.ajexSetup({
+    $.ajaxSetup({
         headers:{
             'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
         }
@@ -266,6 +267,8 @@
                 $('#pcategory').text(data.product.category.category_name_en);
                 $('#pbrand').text(data.product.brands.brand_name_en);
                 $('#pimage').attr('src','/'+data.product.product_thambnail);
+                $('#product_id').val(id);
+                $('#qty').val(1);
 
                 // Product Price
                 if (data.product.discount_price == null) {
@@ -308,6 +311,33 @@
             }
         })
     }
+    // End Product View with Modal
+
+
+    // Start Add To Cart Product
+    function addToCart() {
+        var product_name = $('#pname').text();
+        var id = $('#product_id').val();
+        var color = $('#color option:selected').text();
+        var size = $('#size option:selected').text();
+        var quantity = $('#qty').val();
+
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            data: {
+                color:color, size:size, quantity:quantity, product_name:product_name
+            },
+            url: "/cart/data/store/"+id,
+            success:function (data) {
+                $('#closeModel').click();
+                console.log(data)
+            }
+        })
+
+    }
+
+    // End Add To Cart Product
 
 </script>
 
