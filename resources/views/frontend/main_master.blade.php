@@ -70,7 +70,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script type="text/javascript">
-    // Laravel Toster
+    // Start Laravel Toster
     @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
     switch(type){
@@ -91,10 +91,11 @@
             break;
     }
     @endif
+    // End Laravel Toster
 
 
 
-    // Image Preview
+    // Start Image Preview
     $(document).ready(function () {
         $('#image').change(function (e) {
             var reader = new FileReader();
@@ -104,6 +105,26 @@
             reader.readAsDataURL(e.target.files['0']);
         });
     });
+    // End Image Preview
+
+    // Start Increment and Decrement
+    let plusBtn = document.querySelector('.plus');
+    minusBtn = document.querySelector('.minus');
+    numBtn = document.querySelector('.num');
+
+    plusBtn.addEventListener('click', ()=>{
+        numBtn.value = parseInt(numBtn.value) + 1;
+    });
+
+    minusBtn.addEventListener('click', ()=>{
+        if (numBtn.value <= 0) {
+            numBtn.value = 0;
+        } else {
+            numBtn.value = parseInt(numBtn.value) - 1;
+        }
+    });
+    // End Increment and Decrement
+
 </script>
 
 
@@ -340,7 +361,6 @@
                 const Toast = Swal.mixin({
                     toast: true,
                     position: 'top-end',
-                    icon: 'success',
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true,
@@ -353,10 +373,12 @@
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         icon: 'success',
+                        icon: 'success',
                         title: data.success
                     })
                 } else {
                     Toast.fire({
+                        icon: 'error',
                         icon: 'error',
                         title: data.error
                     })
@@ -425,7 +447,6 @@
                 const Toast = Swal.mixin({
                       toast: true,
                       position: 'top-end',
-                      icon: 'success',
                       showConfirmButton: false,
                       timer: 3000,
                       timerProgressBar: true,
@@ -437,11 +458,13 @@
                 if ($.isEmptyObject(data.error)) {
                     Toast.fire({
                         type: 'success',
+                        icon: 'success',
                         title: data.success
                     })
                 }else{
                     Toast.fire({
                         type: 'error',
+                        icon: 'error',
                         title: data.error
                     })
                 }
@@ -452,6 +475,49 @@
     // End Mini Cart Remonve
 
 </script>
+
+{{-- Start Add WishList Page --}}
+<script type="text/javascript">
+    function addToWishList(product_id) {
+        $.ajax({
+            type: "POST",
+            dataType: 'json',
+            url: '/add-to-wishlist/'+product_id,
+
+            success:function (data) {
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+
+            }
+        })
+    }
+</script>
+{{-- End Add WishList Page --}}
 
 
 </body>

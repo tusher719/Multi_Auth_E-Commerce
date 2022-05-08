@@ -227,10 +227,18 @@
                                                 <div class="cart-quantity">
                                                     <div class="quant-input">
                                                         <div class="arrows">
-                                                            <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-                                                            <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+                                                            <div class="arrow plus gradient">
+                                                                <span class="ir plus">
+                                                                    <i class="icon fa fa-sort-asc"></i>
+                                                                </span>
+                                                            </div>
+                                                            <div class="arrow minus gradient">
+                                                                <span class="ir minus">
+                                                                    <i class="icon fa fa-sort-desc"></i>
+                                                                </span>
+                                                            </div>
                                                         </div>
-                                                        <input type="text" id="qty" value="1" min="1">
+                                                        <input type="text" id="qty" class="num" value="1" min="1">
                                                     </div>
                                                 </div>
                                             </div>

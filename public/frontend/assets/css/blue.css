@@ -109,7 +109,8 @@ a {
 }
 .product .cart .action ul li.add-cart-button .btn-primary.icon:hover,
 .product .cart .action ul li.add-cart-button .btn-primary.icon:focus {
-  background: #0f6cb2;
+  background: #fdd922;
+    color: #333;
 }
 .tag.sale {
   background: #fdd922;
@@ -417,7 +418,7 @@ a {
 }
 .mega-menu .dropdown-menu {
 width:100%;
-left:0px 
+left:0px
 }
 
 .navbar-nav>li>.dropdown-menu { box-shadow:0 4px 6px -1px rgba(0,0,0,0.4);}
