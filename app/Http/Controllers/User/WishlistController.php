@@ -48,5 +48,12 @@ class WishlistController extends Controller
     } // end mehtod
 
 
+    // WishList Read Product With Ajax
+    public function RemoveWishlistProduct($id) {
+        Wishlist::where('user_id',Auth::id())->where('id',$id)->delete();
+        return response()->json(['success' => 'Successfully Product Remove!']);
+
+    }
+
 
 }

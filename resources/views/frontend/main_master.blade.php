@@ -145,7 +145,7 @@
                     <div class="col-lg-5 col-md-6 col-sm-6">
 
                         <div class="card">
-                            <img src="" id="pimage" class="card-img-top" alt="..." style="height: 350px; width: 350px; object-fit: cover; border: 1px solid #aaa;">
+                            <img src="" id="pimage" class="card-img-top img-thumbnail" alt="...">
                         </div>
 
                     </div> <!-- End col md -->
@@ -530,15 +530,15 @@
                 var rows = ""
                 $.each(response, function(key,value){
                     rows += `<tr>
-                    <td class="col-md-2"><img src="/${value.product.product_thambnail} " alt="imga"></td>
+                    <td class="col-md-2"><img class="img-thumbnail" src="/${value.product.product_thambnail} " alt="imga"></td>
                     <td class="col-md-7">
                         <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
 
                         <div class="price">
-                        ${value.product.discount_price == null
+                        $${value.product.discount_price == null
                         ? `${value.product.selling_price}`
                         :
-                        `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                        `${value.product.discount_price} <span>$ ${value.product.selling_price}</span>`
                     }
 
                         </div>
@@ -547,7 +547,7 @@
             <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
         </td>
         <td class="col-md-1 close-btn">
-            <a href="#" class=""><i class="fa fa-times"></i></a>
+            <button type="submit" class="btn" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
         </td>
                 </tr>`
                 });
@@ -557,6 +557,50 @@
         })
     }
     wishlist();
+
+
+
+
+
+    // Start WishList Remove
+    function wishlistRemove(id){
+        $.ajax({
+            type: 'GET',
+            url: '/wishlist-remove/'+id,
+            dataType:'json',
+            success:function(data){
+                wishlist();
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+            }
+        });
+    }
+    // End WishList Remove
 </script>
 <!-- Start WishList -->
 
