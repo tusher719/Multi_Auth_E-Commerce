@@ -11,7 +11,7 @@
                                 @if(session()->get('language') == 'bangla') আমার অ্যাকাউন্ট @else My Account @endif
                             </a></li>
                         <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                        <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                        <li><a href="{{ route('mycart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                         <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
                         <li>
                             @auth

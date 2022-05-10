@@ -2,7 +2,7 @@
 @section('content')
 
 @section('title')
-    Wishlist | Product Details
+    Wishlist | Easy Online Shop
 @endsection
 
 

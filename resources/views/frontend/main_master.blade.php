@@ -605,5 +605,110 @@
 <!-- Start WishList -->
 
 
+<!-- Start My Cart -->
+<script type="text/javascript">
+    function myCart(){
+        $.ajax({
+            type: 'GET',
+            url: '/user/get-cart-product',
+            dataType:'json',
+            success:function(response){
+                var rows = ""
+                $.each(response.carts, function(key,value){
+                    rows += `<tr>
+                    <td class="romove-item">
+                        <a href="#" title="cancel" class="icon">
+                            <i class="fa fa-trash-o"></i></a>
+                    </td>
+                    <td class="col-md-1">
+                        <img class="img-thumbnail" src="/${value.options.image} " alt="imga">
+                    </td>
+                    <td class="cart-product-name-info">
+                        <h4 class='cart-product-description'><a href="#">${value.name}</a></h4>
+
+                        <div class="cart-product-info">
+                            <span class="product-color">COLOR:<span> ${value.options.color} </span></span>
+                            <br>
+                            ${value.options.size == null
+                                ? ``
+                                :
+                                `<span class="product-color">SIZE:<span> ${value.options.size} </span></span>`
+                            }
+                        </div>
+                    </td>
+
+                    <td class="cart-product-quantity">
+                        <div class="quant-input">
+                            <div class="arrows">
+                                <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
+                                <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
+                            </div>
+                            <input type="text" value="${value.qty}">
+                        </div>
+                    </td>
+
+                    <td class="cart-product-sub-total">
+                        <span class="cart-sub-total-price">$${value.price}</span>
+                    </td>
+                    <td class="cart-product-grand-total">
+                        <span class="cart-grand-total-price">$${value.subtotal}</span>
+                    </td>
+
+                </tr>`
+                });
+
+                $('#cartPage').html(rows);
+            }
+        })
+    }
+    myCart();
+
+
+
+
+
+    // Start Cart Remove
+    function wishlistRemove(id){
+        $.ajax({
+            type: 'GET',
+            url: '/user/wishlist-remove/'+id,
+            dataType:'json',
+            success:function(data){
+                wishlist();
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+            }
+        });
+    }
+    // End Cart Remove
+</script>
+<!-- Start My Cart -->
+
+
 </body>
 </html>
