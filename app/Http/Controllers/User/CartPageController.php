@@ -24,5 +24,11 @@ class CartPageController extends Controller
             'cartQty' => $cartQty,
             'cartSubTotal' => round($cartSubTotal),
         ));
+    } // End Method
+
+    // Remove Cart Item
+    public function RemoveCartProduct($rowId) {
+        Cart::remove($rowId);
+        return response()->json(['success' => 'Successfully Remove from Cart']);
     }
 }

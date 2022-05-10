@@ -617,8 +617,8 @@
                 $.each(response.carts, function(key,value){
                     rows += `<tr>
                     <td class="romove-item">
-                        <a href="#" title="cancel" class="icon">
-                            <i class="fa fa-trash-o"></i></a>
+                        <button href="#" title="cancel" class="icon" id="${value.rowId}" onclick="cardRemove(this.id)">
+                            <i class="fa fa-trash-o"></i></button>
                     </td>
                     <td class="col-md-1">
                         <img class="img-thumbnail" src="/${value.options.image} " alt="imga">
@@ -668,13 +668,14 @@
 
 
     // Start Cart Remove
-    function wishlistRemove(id){
+    function cardRemove(id){
         $.ajax({
             type: 'GET',
-            url: '/user/wishlist-remove/'+id,
+            url: '/user/cart-remove/'+id,
             dataType:'json',
             success:function(data){
-                wishlist();
+                myCart();
+                miniCart();
 
                 // Start Message
                 const Toast = Swal.mixin({

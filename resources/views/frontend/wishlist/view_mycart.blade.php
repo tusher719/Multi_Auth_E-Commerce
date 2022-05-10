@@ -20,6 +20,20 @@
 <div class="body-content">
     <div class="container">
         <div class="my-wishlist-page">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <span style="font-size: 18px; font-weight: 700; color: grey">Sub Total:</span>
+                        <span class="total-price">
+                            <span class="sign" style="font-size: 18px; font-weight: 700; color: #0f6cb2;">
+                                $<span class="value" id="cartSubTotal"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
             <div class="row ">
                 <div class="shopping-cart">
                     <div class="shopping-cart-table ">
