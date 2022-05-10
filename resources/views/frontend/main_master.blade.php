@@ -638,13 +638,33 @@
                     </td>
 
                     <td class="cart-product-quantity">
-                        <div class="quant-input">
-                            <div class="arrows">
-                                <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-                                <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-                            </div>
-                            <input type="text" value="${value.qty}">
-                        </div>
+    <div class="cart-quantity">
+        <div class="quant-input">
+            <div class="arrows">
+                <div class="arrow plus gradient">
+                    <span class="ir" id="${value.rowId}" onclick="cardIncrement(this.id)">
+                        <i class="icon fa fa-plus"></i>
+                    </span>
+                </div>
+                <div class="arrow minus gradient">
+                    ${value.qty > 1
+                        ?
+                        `<span class="ir" id="${value.rowId}" onclick="cardDecrement(this.id)">
+                            <i class="icon fa fa-minus"></i>
+                        </span>`
+                        :
+                        `<span class="ir" style="cursor: not-allowed; color: gray">
+                            <i class="icon fa fa-minus"></i>
+                        </span>`
+
+                    }
+
+                </div>
+            </div>
+            <input type="text" value="${value.qty}">
+        </div>
+    </div>
+
                     </td>
 
                     <td class="cart-product-sub-total">
@@ -707,6 +727,34 @@
         });
     }
     // End Cart Remove
+
+    //===== Start Card Increment =====//
+    function cardIncrement(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: '/cart-increment/' + rowId,
+            dataType: 'json',
+            success: function (data) {
+                myCart();
+                miniCart();
+            }
+        });
+    }
+    //===== End Card Increment =====//
+
+    //===== Start Card Decrement =====//
+    function cardDecrement(rowId) {
+        $.ajax({
+            type: 'GET',
+            url: '/cart-decrement/' + rowId,
+            dataType: 'json',
+            success: function (data) {
+                myCart();
+                miniCart();
+            }
+        });
+    }
+    //===== End Card Increment =====//
 </script>
 <!-- Start My Cart -->
 
