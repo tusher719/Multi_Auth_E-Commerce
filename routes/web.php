@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
+use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 
@@ -124,6 +125,13 @@ Route::prefix('slider')->group(function (){
 
     Route::get('/inactive/{id}', [SliderController::class, 'SliderInactive'])->name('slider.inactive');
     Route::get('/active/{id}', [SliderController::class, 'SliderActive'])->name('slider.active');
+
+});
+
+// Admin Coupon All Route
+Route::prefix('coupons')->group(function (){
+    Route::get('/view', [CouponController::class, 'CouponView'])->name('manage-coupon');
+    Route::post('/store', [CouponController::class, 'CouponStore'])->name('coupon.store');
 
 });
 
