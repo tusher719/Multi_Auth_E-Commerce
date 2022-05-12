@@ -343,12 +343,13 @@
         var color = $('#color option:selected').text();
         var size = $('#size option:selected').text();
         var quantity = $('#qty').val();
+        var brand = $('#pbrand').text()
 
         $.ajax({
             type: "POST",
             dataType: 'json',
             data: {
-                color:color, size:size, quantity:quantity, product_name:product_name
+                color:color, size:size, quantity:quantity, brand:brand, product_name:product_name
             },
             url: "/cart/data/store/"+id,
             success:function (data) {
@@ -415,7 +416,7 @@
                                         </div>
                                         <div class="col-xs-7">
                                             <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
-                                            <div class="price">${value.price} <span style="color: grey">*</span> ${value.qty}</div>
+                                            <div class="price">$${value.price} <span style="color: grey">*</span> ${value.qty}</div>
                                         </div>
                                         <div class="col-xs-1 action">
                                             <button class="btn btn-sm" type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
@@ -627,12 +628,12 @@
                         <h4 class='cart-product-description'><a href="#">${value.name}</a></h4>
 
                         <div class="cart-product-info">
-                            <span class="product-color">COLOR:<span> ${value.options.color} </span></span>
-                            <br>
+                            <span class="product-color">Brand:<span> ${value.options.brand}, </span></span>
+                            <span class="product-color">Color:<span> ${value.options.color}, </span></span>
                             ${value.options.size == null
                                 ? ``
                                 :
-                                `<span class="product-color">SIZE:<span> ${value.options.size} </span></span>`
+                                `<span class="product-color">Size:<span> ${value.options.size}, </span></span>`
                             }
                         </div>
                     </td>
@@ -671,7 +672,7 @@
                         <span class="cart-sub-total-price">$${value.price}</span>
                     </td>
                     <td class="cart-product-grand-total">
-                        <span class="cart-grand-total-price">$${value.subtotal}</span>
+                        <span class="cart-grand-total-price" style="font-weight: 700">$${value.subtotal}</span>
                     </td>
 
                 </tr>`

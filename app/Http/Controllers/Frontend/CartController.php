@@ -28,6 +28,7 @@ class CartController extends Controller
                     'image' => $product->product_thambnail,
                     'color' => $request->color,
                     'size' => $request->size,
+                    'brand' => $request->brand,
                 ],
             ]);
 
@@ -45,6 +46,7 @@ class CartController extends Controller
                     'image' => $product->product_thambnail,
                     'color' => $request->color,
                     'size' => $request->size,
+                    'brand' => $request->brand,
                 ],
             ]);
             return response()->json(['success' => 'Successfully Added on Your Cart']);
