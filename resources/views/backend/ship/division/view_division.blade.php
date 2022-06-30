@@ -6,6 +6,22 @@
 
     <div class="container-full">
         <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Ship Division</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Shiping Area</li>
+                                <li class="breadcrumb-item active" aria-current="page">Ship Division</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Main content -->
@@ -18,7 +34,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Division List</h3>
+                            <h3 class="box-title">Division List <span class="badge badge-pill badge-primary badge-sm">{{ $total_division }}</span></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -37,8 +53,8 @@
                                             <td> {{ $item->division_name }}  </td>
 
                                             <td width="40%">
-                                                <a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
-                                                <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
+                                                <a href="{{ route('division.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                                <a href="{{ route('division.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>
                                             </td>
 
@@ -79,7 +95,7 @@
                                     <div class="form-group">
                                         <h5>Division Name  <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text"  name="division_name" class="form-control" >
+                                            <input type="text"  name="division_name" class="form-control" placeholder="Enter division name...">
                                             @error('division_name')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
