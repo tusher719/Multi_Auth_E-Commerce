@@ -118,6 +118,11 @@ $route = Route::current()->getName();
                             <i class="ti-more"></i>Ship Division
                         </a>
                     </li>
+                    <li class="{{ ($route == 'manage-district')? 'active':'' }}">
+                        <a href="{{ route('manage-district') }}">
+                            <i class="ti-more"></i>Ship District
+                        </a>
+                    </li>
 
 
 
