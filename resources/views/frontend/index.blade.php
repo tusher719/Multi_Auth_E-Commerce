@@ -57,9 +57,9 @@
                                                             <div class="rating rateit-small"></div>
 
                                                             @if($product->discount_price == NULL)
-                                                                <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                                <div class="product-price"> <span class="price"> ৳{{ number_format($product->selling_price) }} </span> </div>
                                                             @else
-                                                                <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> </div>
+                                                                <div class="product-price"> <span class="price"> ৳{{ number_format($product->discount_price) }} </span> </div>
                                                             @endif
                                                             <!-- /.product-price -->
 
@@ -130,11 +130,11 @@
 
                                                             @if($product->discount_price == NULL)
                                                                 <div class="product-price">
-                                                                    <span class="price"> ${{ $product->selling_price }} </span>
+                                                                    <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                                 </div>
                                                             @else
                                                                 <div class="product-price">
-                                                                    <span class="price"> ${{ $product->discount_price }} </span>
+                                                                    <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
                                                                 </div>
                                                             @endif
                                                             <!-- /.product-price -->
@@ -303,7 +303,7 @@
                                                 <div class="product">
                                                     <div class="product-image">
                                                         <div class="image">
-                                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                            <a href="{{ url('producst/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                                 <img src="{{ asset($product->product_thambnail) }}" alt="">
                                                             </a>
                                                         </div>
@@ -341,12 +341,12 @@
 
                                                         @if($product->discount_price == NULL)
                                                             <div class="product-price">
-                                                                <span class="price"> ${{ $product->selling_price }} </span>
+                                                                <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                             </div>
                                                         @else
                                                             <div class="product-price">
-                                                                <span class="price"> ${{ $product->discount_price }} </span>
-                                                                <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
+                                                                <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                                <span class="price-before-discount"> $ {{ number_format($product->selling_price) }} </span>
                                                             </div>
                                                         @endif
                                                         <!-- /.product-price -->
@@ -443,12 +443,12 @@
 
                                                                 @if($product->discount_price == NULL)
                                                                     <div class="product-price">
-                                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                                     </div>
                                                                 @else
                                                                     <div class="product-price">
-                                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                                        <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
+                                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                                        <span class="price-before-discount"> $ {{ number_format($product->selling_price) }} </span>
                                                                     </div>
                                                             @endif
                                                                 <!-- /.product-price -->
@@ -573,12 +573,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">$ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                                 @endif
                                             <!-- /.product-price -->
@@ -681,12 +681,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount"> $ {{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount"> $ {{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @endif
                                             <!-- /.product-price -->
@@ -780,10 +780,10 @@
 
 
                                                 @if($product->discount_price == NULL)
-                                                    <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span> </div>
+                                                    <div class="product-price"> <span class="price"> ৳{{ number_format($product->selling_price) }} </span> </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount"> $ {{ $product->selling_price }}</span> </div>
+                                                    <div class="product-price"> <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount"> ৳ {{ number_format($product->selling_price) }}</span> </div>
                                             @endif
                                             <!-- /.product-price -->
 
@@ -875,11 +875,11 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
-                                                    <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    <div class="product-price"> <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -966,12 +966,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount"> $ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount"> ৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1064,12 +1064,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1196,12 +1196,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1298,12 +1298,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1397,12 +1397,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1496,12 +1496,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                                 @endif
                                             <!-- /.product-price -->
@@ -1595,12 +1595,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1694,12 +1694,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->
@@ -1790,12 +1790,12 @@
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->selling_price }} </span>
+                                                        <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                     </div>
                                                 @else
                                                     <div class="product-price">
-                                                        <span class="price"> ${{ $product->discount_price }} </span>
-                                                        <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                        <span class="price"> ৳{{ number_format($product->discount_price) }} </span>
+                                                        <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                     </div>
                                             @endif
                                             <!-- /.product-price -->

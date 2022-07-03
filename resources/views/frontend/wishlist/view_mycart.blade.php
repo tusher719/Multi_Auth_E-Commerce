@@ -23,13 +23,14 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <div>
-                        <span style="font-size: 18px; font-weight: 700; color: grey">Sub Total:</span>
+                    <div style="border: 1px solid #278cd1;  background: #278cd1; display: inline-block; padding: 6px 10px; border-radius: 5px">
+                        <span style="font-size: 18px; font-weight: 700; color: #171819;">Subtotal ( <span class="count" style="color: #fff;" id="myCartQty"> </span> Items):</span>
                         <span class="total-price">
-                            <span class="sign" style="font-size: 18px; font-weight: 700; color: #0f6cb2;">
-                                $<span class="value" id="cartSubTotal"></span>
+                            <span class="sign" style="font-size: 18px; font-weight: 600; color: #fff;">
+                                ৳<span class="value" id="cartSubTotal"></span>
                             </span>
                         </span>
+                        <div class="basket-item-count"></div>
                     </div>
                 </div>
             </div>

@@ -9,7 +9,7 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="#">Clothing</a></li>
                     <li class='active'>Floral Print Buttoned</li>
                 </ul>
@@ -150,10 +150,10 @@
                                                 <div class="price-box">
 
                                                     @if($product->discount_price == NULL)
-                                                        <span class="price">${{ $product->selling_price }}</span>
+                                                        <span class="price">৳{{ number_format($product->selling_price) }}</span>
                                                     @else
-                                                        <span class="price">${{ $product->discount_price }}</span>
-                                                        <span class="price-strike">${{ $product->selling_price }}</span>
+                                                        <span class="price">৳{{ number_format($product->discount_price) }}</span>
+                                                        <span class="price-strike">৳{{ number_format($product->selling_price) }}</span>
                                                     @endif
                                                 </div>
                                             </div>
@@ -462,12 +462,12 @@
 
                                             @if($product->discount_price == NULL)
                                                 <div class="product-price">
-                                                    <span class="price">${{ $product->selling_price }}</span>
+                                                    <span class="price">৳{{ number_format($product->selling_price) }}</span>
                                                 </div><!-- /.product-price -->
                                             @else
                                                 <div class="product-price">
-                                                    <span class="price">${{ $product->discount_price }}</span>
-                                                    <span class="price-before-discount">$ {{ $product->selling_price }}</span>
+                                                    <span class="price">৳{{ number_format($product->discount_price) }}</span>
+                                                    <span class="price-before-discount">৳ {{ number_format($product->selling_price) }}</span>
                                                 </div><!-- /.product-price -->
                                             @endif
 

@@ -64,11 +64,13 @@ class CartController extends Controller
     public function AddMiniCart() {
         $carts = Cart::content();
         $cartQty = Cart::count();
+        $myCartQty = Cart::count();
         $cartSubTotal = Cart::total();
 
         return response()->json(array(
             'carts' => $carts,
             'cartQty' => $cartQty,
+            'myCartQty' => $myCartQty,
             'cartSubTotal' => round($cartSubTotal),
         ));
 

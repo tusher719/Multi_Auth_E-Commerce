@@ -9,7 +9,7 @@
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="#">Home</a></li>
+                <li><a href="{{ url('/') }}">Home</a></li>
                 <li class='active'>Handbags</li>
             </ul>
         </div>
@@ -299,15 +299,15 @@
 
                                                         @if($product->discount_price == NULL)
                                                             <div class="product-price">
-                                                                <span class="price"> ${{ $product->selling_price }} </span>
+                                                                <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                             </div>
                                                         @else
                                                             <div class="product-price">
                                                                 <span class="price">
-                                                                    ${{ $product->discount_price }}
+                                                                    ৳{{ number_format($product->discount_price) }}
                                                                 </span>
                                                                 <span class="price-before-discount">
-                                                                    $ {{ $product->selling_price }}
+                                                                    ৳ {{ number_format($product->selling_price) }}
                                                                 </span>
                                                             </div>
                                                     @endif
@@ -319,10 +319,14 @@
                                                         <div class="action">
                                                             <ul class="list-unstyled">
                                                                 <li class="add-cart-button btn-group">
-                                                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                    <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fa fa-shopping-cart"></i> </button>
                                                                     <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                                                 </li>
-                                                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                <li class="add-cart-button btn-group">
+                                                                    <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)">
+                                                                        <i class="icon fa fa-heart"></i>
+                                                                    </button>
+                                                                </li>
                                                                 <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                                             </ul>
                                                         </div>
@@ -377,15 +381,15 @@
                                                             <div class="rating rateit-small"></div>
                                                             @if($product->discount_price == NULL)
                                                                 <div class="product-price">
-                                                                    <span class="price"> ${{ $product->selling_price }} </span>
+                                                                    <span class="price"> ৳{{ number_format($product->selling_price) }} </span>
                                                                 </div>
                                                             @else
                                                                 <div class="product-price">
                                                                     <span class="price">
-                                                                        ${{ $product->discount_price }}
+                                                                        ৳{{ number_format($product->discount_price) }}
                                                                     </span>
                                                                     <span class="price-before-discount">
-                                                                        $ {{ $product->selling_price }}
+                                                                        ৳ {{ number_format($product->selling_price) }}
                                                                     </span>
                                                                 </div>
                                                         @endif
@@ -402,10 +406,14 @@
                                                                 <div class="action">
                                                                     <ul class="list-unstyled">
                                                                         <li class="add-cart-button btn-group">
-                                                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                                            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fa fa-shopping-cart"></i> </button>
+                                                                            <button class="btn btn-primary cart-btn" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)">Add to cart</button>
                                                                         </li>
-                                                                        <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                        <li class="add-cart-button btn-group">
+                                                                            <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)">
+                                                                                <i class="icon fa fa-heart"></i>
+                                                                            </button>
+                                                                        </li>
                                                                         <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                                                     </ul>
                                                                 </div>

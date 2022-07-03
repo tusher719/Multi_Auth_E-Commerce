@@ -174,7 +174,7 @@
                             <!-- Product Price -->
                             <div class="price-box">
                                 <span class="price" style="color: #ff5722; font-size: 30px; font-weight: 700; line-height: 50px;">
-                                    $<span id="pprice"></span>
+                                    ৳<span id="pprice"></span>
                                 </span>
                                 <span class="price-strike" id="oldprice" style="color: #aaa; font-size: 16px; font-weight: 400; line-height: 50px; text-decoration: line-through;"></span>
                             </div>
@@ -299,7 +299,7 @@
                     $('#pprice').text(data.product.selling_price);
                 } else {
                     $('#pprice').text(data.product.discount_price);
-                    $('#oldprice').text('$ '+data.product.selling_price);
+                    $('#oldprice').text('৳ '+data.product.selling_price);
                 }
 
                 // Start Stock Option
@@ -406,6 +406,7 @@
             success:function (response) {
                 $('span[id="cartSubTotal"]').text(response.cartSubTotal);
                 $('#cartQty').text(response.cartQty);
+                $('#myCartQty').text(response.myCartQty);
                 var miniCart = ""
 
                 $.each(response.carts, function (key,value) {
@@ -416,7 +417,7 @@
                                         </div>
                                         <div class="col-xs-7">
                                             <h3 class="name"><a href="index.php?page-detail">${value.name}</a></h3>
-                                            <div class="price">$${value.price} <span style="color: grey">*</span> ${value.qty}</div>
+                                            <div class="price">৳${value.price} <span style="color: grey">*</span> ${value.qty}</div>
                                         </div>
                                         <div class="col-xs-1 action">
                                             <button class="btn btn-sm" type="submit" id="${value.rowId}" onclick="miniCartRemove(this.id)"><i class="fa fa-trash"></i></button>
@@ -536,10 +537,10 @@
                         <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
 
                         <div class="price">
-                        $${value.product.discount_price == null
+                        ৳${value.product.discount_price == null
                         ? `${value.product.selling_price}`
                         :
-                        `${value.product.discount_price} <span>$ ${value.product.selling_price}</span>`
+                        `${value.product.discount_price} <span>৳ ${value.product.selling_price}</span>`
                     }
 
                         </div>
@@ -639,40 +640,40 @@
                     </td>
 
                     <td class="cart-product-quantity">
-    <div class="cart-quantity">
-        <div class="quant-input">
-            <div class="arrows">
-                <div class="arrow plus gradient">
-                    <span class="ir" id="${value.rowId}" onclick="cardIncrement(this.id)">
-                        <i class="icon fa fa-plus"></i>
-                    </span>
-                </div>
-                <div class="arrow minus gradient">
-                    ${value.qty > 1
-                        ?
-                        `<span class="ir" id="${value.rowId}" onclick="cardDecrement(this.id)">
-                            <i class="icon fa fa-minus"></i>
-                        </span>`
-                        :
-                        `<span class="ir" style="cursor: not-allowed; color: gray">
-                            <i class="icon fa fa-minus"></i>
-                        </span>`
+                        <div class="cart-quantity">
+                            <div class="quant-input">
+                                <div class="arrows">
+                                    <div class="arrow plus gradient">
+                                        <span class="ir" id="${value.rowId}" onclick="cardIncrement(this.id)">
+                                            <i class="icon fa fa-plus"></i>
+                                        </span>
+                                    </div>
+                                    <div class="arrow minus gradient">
+                                        ${value.qty > 1
+                                            ?
+                                            `<span class="ir" id="${value.rowId}" onclick="cardDecrement(this.id)">
+                                                <i class="icon fa fa-minus"></i>
+                                            </span>`
+                                            :
+                                            `<span class="ir" style="cursor: not-allowed; color: gray">
+                                                <i class="icon fa fa-minus"></i>
+                                            </span>`
 
-                    }
+                                        }
 
-                </div>
-            </div>
-            <input type="text" value="${value.qty}">
-        </div>
-    </div>
+                                    </div>
+                                </div>
+                                <input type="text" value="${value.qty}">
+                            </div>
+                        </div>
 
                     </td>
 
                     <td class="cart-product-sub-total">
-                        <span class="cart-sub-total-price">$${value.price}</span>
+                        <span class="cart-sub-total-price">৳${value.price}</span>
                     </td>
                     <td class="cart-product-grand-total">
-                        <span class="cart-grand-total-price" style="font-weight: 700">$${value.subtotal}</span>
+                        <span class="cart-grand-total-price" style="font-weight: 700">৳${value.subtotal}</span>
                     </td>
 
                 </tr>`
@@ -818,10 +819,10 @@
                         `<tr>
                             <th>
                                 <div class="cart-sub-total">
-                                    Subtotal<span class="inner-left-md">$ ${data.total}</span>
+                                    Subtotal<span class="inner-left-md">৳ ${data.total}</span>
                                 </div>
                                 <div class="cart-grand-total">
-                                    Grand Total<span class="inner-left-md">$ ${data.total}</span>
+                                    Grand Total<span class="inner-left-md">৳ ${data.total}</span>
                                 </div>
                             </th>
                         </tr>`
@@ -834,7 +835,7 @@
                                     <tr>
                                         <th style="padding: 4px 4px 4px 4px; font-size: 14px; color: #555;">Sub Total</th>
                                         <th style="padding: 4px">:</th>
-                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #555;">$ ${data.subtotal}</th>
+                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #555;">৳ ${data.subtotal}</th>
                                     </tr>
                                     <tr>
                                         <th style="padding: 4px 4px 4px 4px; font-size: 14px; color: #555;">Coupon</th>
@@ -851,12 +852,12 @@
                                     <tr>
                                         <th style="padding: 4px 4px 4px 4px; font-size: 14px; color: #555;">Your Saved</th>
                                         <th style="padding: 4px">:</th>
-                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #555;">$ ${data.discount_amount}</th>
+                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #555;">৳ ${data.discount_amount}</th>
                                     </tr>
                                     <tr>
                                         <th style="padding: 4px 4px 4px 4px; font-size: 14px; color: #84b943;">Grand Total</th>
                                         <th style="padding: 4px">:</th>
-                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #84b943;">$ ${data.total_amount}</th>
+                                        <th style="padding: 4px 4px 4px 20px; font-size: 14px; color: #84b943;">৳ ${data.total_amount}</th>
                                     </tr>
                                 </table>
                                 <!-- <div class="cart-sub-total">
