@@ -58,7 +58,7 @@ $route = Route::current()->getName();
 
             <li class="treeview  {{ ($prefix == '/product')?'active':'' }}">
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="globe"></i>
                     <span>Products</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
@@ -72,7 +72,7 @@ $route = Route::current()->getName();
 
             <li class="treeview {{ ($prefix == '/slider')?'active':'' }}">
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="layers"></i>
                     <span>Slider</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
@@ -85,7 +85,7 @@ $route = Route::current()->getName();
 
             <li class="treeview {{ ($prefix == '/coupons')?'active':'' }}">
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="tag"></i>
                     <span>Coupons</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-right pull-right"></i>
@@ -106,7 +106,7 @@ $route = Route::current()->getName();
 
             <li class="treeview {{ ($prefix == '/shipping')?'active':'' }}  ">
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="map"></i>
                     <span>Shipping Area</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
