@@ -154,6 +154,12 @@ class ShippingAreaController extends Controller
 
     ///// =====|| Start Ship State ||===== /////
 
+    // Ajax District
+    public function GetDistrict($division_id) {
+        $district = ShipDistrict::where('division_id', $division_id)->orderBy('district_name', 'ASC')->get();
+        return json_encode($district);
+    }
+
     // State View
     public function StateView() {
         $total_state = ShipState::count();

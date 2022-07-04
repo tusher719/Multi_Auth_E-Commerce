@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Content Wrapper. Contains page content -->
 
@@ -107,11 +107,9 @@
                                         <div class="controls">
                                             <select name="district_id" class="form-control">
                                                 <option value="" selected="" disabled="">Select Division</option>
-                                                @foreach($district as $div)
-                                                    <option value="{{ $div->id }}">{{ $div->district_name }}</option>
-                                                @endforeach
+
                                             </select>
-                                            @error('division_id')
+                                            @error('district_id')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -119,7 +117,7 @@
 
                                     <!-- State -->
                                     <div class="form-group">
-                                        <h5>State Name  <span class="text-danger">*</span></h5>
+                                        <h5>State Name <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text"  name="state_name" class="form-control" placeholder="Enter state name...">
                                             @error('state_name')
@@ -146,6 +144,30 @@
         <!-- /.content -->
 
     </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('select[name="division_id"]').on('change', function () {
+                var division_id = $(this).val();
+                if (division_id) {
+                    $.ajax({
+                        url: "{{ url('/shipping/district/ajax') }}/"+division_id,
+                        type: "GET",
+                        dataType: "json",
+                        success:function (data) {
+                            var d =$('select[name="district_id"]').empty();
+                            $.each(data, function (key, value) {
+                                $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
+                            });
+                        },
+                    });
+                } else {
+                    alert('danger');
+                }
+            });
+        });
+    </script>
 
 
 
