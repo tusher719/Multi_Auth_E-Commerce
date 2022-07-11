@@ -56,7 +56,7 @@
                             </table>
                         </div>
                     </div>
-
+                    <hr style="border-top: 1px solid #b7b7b7">
                     <div class="col-md-3 col-sm-12 estimate-ship-tax">
                     </div>
 
@@ -103,7 +103,7 @@
                             <tr>
                                 <td>
                                     <div class="cart-checkout-btn pull-right">
-                                        <button type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</button>
+                                        <a href="{{ route('checkout') }}" class="btn btn-primary checkout-btn">PROCEED TO CHECKOUT</a>
                                     </div>
                                 </td>
                             </tr>

@@ -830,7 +830,7 @@
                 } else {
                     $('#couponCalField').html(
                         `<tr>
-                            <th style="float: right">
+                            <th style="display: flex; justify-content: flex-end">
                                 <table>
                                     <tr>
                                         <th style="padding: 4px 4px 4px 4px; font-size: 14px; color: #555;">Sub Total</th>

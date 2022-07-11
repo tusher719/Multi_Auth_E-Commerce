@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
 use App\Models\Product;
+use App\Models\ShipDivision;
 use App\Models\Wishlist;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -129,7 +130,43 @@ class CartController extends Controller
     public function CouponRemove(){
         Session::forget('coupon');
         return response()->json(['success' => 'Coupon Remove Successfully']);
-    }
+    } // end method
+
+    // Checkout Create Method
+    public function CheckoutCreate() {
+        if (Auth::check()) {
+
+            if (Cart::total() > 0) {
+
+                $carts = Cart::content();
+                $cartQty = Cart::count();
+                $myCartQty = Cart::count();
+                $cartSubTotal = Cart::total();
+                $division = ShipDivision::orderBy('division_name', 'ASC')->get();
+
+                return view('frontend.checkout.checkout_view', [
+                    'carts' => $carts,
+                    'cartQty' => $cartQty,
+                    'myCartQty' => $myCartQty,
+                    'cartSubTotal' => $cartSubTotal,
+                    'division' => $division,
+                ]);
+            } else {
+                $notification = array(
+                    'message' => 'Shopping At-List One Product',
+                    'alert-type' => 'error'
+                );
+                return redirect()->to('/')->with($notification);
+            }
+
+        } else {
+            $notification = array(
+                'message' => 'You Need to Login First',
+                'alert-type' => 'error'
+            );
+            return redirect()->route('login')->with($notification);
+        }
+    } // end method
 
 
 

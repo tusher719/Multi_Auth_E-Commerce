@@ -5371,7 +5371,7 @@ age-container #owl-main .owl-next {
   margin-bottom: 0px;
 }
 .shopping-cart .estimate-ship-tax table thead tr > th {
-  padding: 24px 10px 20px 10px;
+  padding: 24px 10px 30px 10px;
 }
 .shopping-cart .estimate-ship-tax table tbody tr > td {
   padding: 24px 10px !important;
@@ -5391,7 +5391,7 @@ age-container #owl-main .owl-next {
 .shopping-cart .cart-shopping-total table thead tr th {
   background-color: #fafafa;
   text-align: right;
-  padding: 24px 50px;
+  padding: 24px 20px;
 
 }
 .shopping-cart .cart-shopping-total table thead tr th .cart-sub-total {
@@ -5399,7 +5399,7 @@ age-container #owl-main .owl-next {
   margin-bottom: 7px;
 }
 .shopping-cart .cart-shopping-total table tbody tr td {
-  padding: 24px 50px;
+  padding: 24px 20px;
 }
 .shopping-cart .cart-shopping-total table tbody tr td .cart-checkout-btn button {
   float: right !important;
