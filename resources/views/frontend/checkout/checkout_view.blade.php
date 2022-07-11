@@ -33,7 +33,7 @@
                                 <div class="panel-heading">
                                     <h4 class="unicase-checkout-title">
                                         <a class="" href="#">
-                                            <span style="font-size: 22px"><i class="fa fa-truck"></i></span>Checkout Method
+                                            <span style="font-size: 22px"><i class="fa fa-truck"></i></span>Shipping Address
                                         </a>
                                     </h4>
                                 </div>
@@ -47,7 +47,6 @@
 
                                             <!-- guest-login -->
                                             <div class="col-md-6 col-sm-6 already-registered-login">
-                                                <h4 class="checkout-subtitle"><b>Shipping Address</b></h4>
                                                 <div class="form-group">
                                                     <label class="info-title"><b>Shipping Name</b> <span>*</span></label>
                                                     <input type="text" name="shipping_name" class="form-control unicase-form-control text-input" placeholder="Enter name" value="{{ Auth::user()->name }}" required>
@@ -120,7 +119,7 @@
                                                 <!-- Notes -->
                                                 <div class="form-group">
                                                     <h5><b>Notes</b> <span class="text-danger">*</span></h5>
-                                                    <textarea class="form-control unicase-form-control text-input" name="notes" id="" cols="30" rows="5" placeholder="Notes"></textarea>
+                                                    <textarea class="form-control unicase-form-control text-input" name="notes" id="" cols="30" rows="5" placeholder="Notes" required></textarea>
                                                 </div> <!-- end form group -->
 
                                             </div>
