@@ -64,7 +64,7 @@
 
                                                 <div class="form-group">
                                                     <label class="info-title"><b>Post Code</b> <span>*</span></label>
-                                                    <input type="text" name="post_code" class="form-control unicase-form-control text-input" placeholder="Enter post code" required>
+                                                    <input type="number" name="post_code" class="form-control unicase-form-control text-input" placeholder="Enter post code" required>
                                                 </div> <!-- end form group -->
 
                                             </div>
