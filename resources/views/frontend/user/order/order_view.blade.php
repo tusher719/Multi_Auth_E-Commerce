@@ -51,7 +51,7 @@
                                             <td> <span class="badge badge-pill badge-info" style="background: #418db9">{{ $order->status }}</span>
                                             </td>
                                             <td class="text-right">
-                                                <a href="#" class="btn btn-info" title="Invoice View"><i class="fa fa-eye"></i> </a>
+                                                <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-info" title="Invoice View"><i class="fa fa-eye"></i> </a>
                                                 <a href="#" class="btn btn-primary" title="Invoice Download"><i class="fa fa-download"></i> </a>
                                             </td>
                                         </tr>
