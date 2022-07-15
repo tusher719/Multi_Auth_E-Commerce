@@ -171,6 +171,8 @@ class IndexController extends Controller
     public function ProductDetails($id, $slug){
         $product = Product::findOrFail($id);
 
+        $title = Product::with('category','subcategory','subsubcategory')->where('id',$id)->first();
+
         $color_en = $product->product_color_en;
         $product_color_en = explode(',', $color_en);
 
@@ -195,6 +197,7 @@ class IndexController extends Controller
             'product_size_ban' => $product_size_ban,
             'multiImg' => $multiImg,
             'relatedProduct' => $relatedProduct,
+            'title' => $title,
         ]);
     }
 

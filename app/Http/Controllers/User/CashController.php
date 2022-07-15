@@ -13,28 +13,20 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
-class StripeController extends Controller
+class CashController extends Controller
 {
     //
-    public function StripeOrder(Request $request) {
+    public function CashOrder(Request $request){
+
 
         if (Session::has('coupon')) {
             $total_amount = Session::get('coupon')['total_amount'];
-        } else {
+        }else{
             $total_amount = round(Cart::total());
         }
 
-        \Stripe\Stripe::setApiKey('sk_test_51KMxvPHAj52WZd9SJJI2sflmAzF2pTcnXdtqlGI49ErlRVJdyqOCqevjWeuNHsTW3k5cIH7QOn89vmsVhQ1tJR6R00yAwrOrrw');
 
-        $token = $_POST['stripeToken'];
 
-        $charge = \Stripe\Charge::create([
-            'amount' => $total_amount*100,
-            'currency' => 'usd',
-            'description' => 'Easy Online Store',
-            'source' => $token,
-            'metadata' => ['order_id' => uniqid()],
-        ]);
         // dd($charge);
 
         $order_id = Order::insertGetId([
@@ -48,22 +40,23 @@ class StripeController extends Controller
             'post_code' => $request->post_code,
             'notes' => $request->notes,
 
-            'payment_type' => 'Stripe',
-            'payment_method' => 'Stripe',
-            'payment_type' => '$charge->payment_method',
-            'transaction_id' => $charge->balance_transaction,
-            'currency' => $charge->currency,
+            'payment_type' => 'Cash On Delivery',
+            'payment_method' => 'Cash On Delivery',
+
+            'currency' =>  'Usd',
             'amount' => $total_amount,
-            'order_number' => $charge->metadata->order_id,
+
+
             'invoice_no' => 'EOS'.mt_rand(10000000,99999999),
             'order_date' => Carbon::now()->format('d F Y'),
             'order_month' => Carbon::now()->format('F'),
             'order_year' => Carbon::now()->format('Y'),
             'status' => 'Pending',
             'created_at' => Carbon::now(),
+
         ]);
 
-        // Start Sent Email
+        // Start Send Email
         $invoice = Order::findOrFail($order_id);
         $data = [
             'invoice_no' => $invoice->invoice_no,
@@ -71,8 +64,11 @@ class StripeController extends Controller
             'name' => $invoice->name,
             'email' => $invoice->email,
         ];
+
         Mail::to($request->email)->send(new OrderMail($data));
-        // End Sent Email
+
+        // End Send Email
+
 
         $carts = Cart::content();
         foreach ($carts as $cart) {
@@ -84,8 +80,11 @@ class StripeController extends Controller
                 'qty' => $cart->qty,
                 'price' => $cart->price,
                 'created_at' => Carbon::now(),
+
             ]);
         }
+
+
         if (Session::has('coupon')) {
             Session::forget('coupon');
         }

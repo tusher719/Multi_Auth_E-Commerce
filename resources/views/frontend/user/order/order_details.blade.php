@@ -98,8 +98,13 @@
                                             </tr>
 
                                             <tr>
-                                                <th> Tranx ID : </th>
-                                                <th> {{ $order->transaction_id }} </th>
+                                                @if($order->transaction_id == true)
+                                                    <th> Tranx ID : </th>
+                                                    <th> {{ $order->transaction_id }} </th>
+                                                @else
+                                                    <th> Tranx ID : </th>
+                                                    <th> Null </th>
+                                                @endif
                                             </tr>
 
                                             <tr>
@@ -109,7 +114,7 @@
 
                                             <tr>
                                                 <th> Order Total : </th>
-                                                <th>{{ $order->amount }} </th>
+                                                <th>{{ number_format($order->amount,2) }} </th>
                                             </tr>
 
                                             <tr>
