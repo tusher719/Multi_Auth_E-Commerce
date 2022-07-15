@@ -16,7 +16,6 @@
 {{--                        </h4>--}}
                         <div class="card-body">
 
-
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header"><h4>Shipping Details</h4></div>
@@ -65,14 +64,11 @@
 
                                         </table>
 
-
                                     </div>
 
                                 </div>
 
                             </div> <!-- // end col md -6 -->
-
-
 
                             <div class="col-md-6">
                                 <div class="card">
@@ -122,11 +118,7 @@
                                                 <th>
                                                     <span class="badge badge-pill badge-warning" style="background: #418DB9;">{{ $order->status }} </span> </th>
                                             </tr>
-
-
-
                                         </table>
-
 
                                     </div>
 
@@ -134,10 +126,7 @@
 
                             </div> <!-- // 2ND end col md -6 -->
 
-
                             <div class="row">
-
-
 
                                 <div class="col-md-12">
 
@@ -160,9 +149,7 @@
                                                 <th> Price </th>
 
                                                 <th class="text-right"> Total </th>
-
                                             </tr>
-
 
                                             @foreach($orderItem as $item)
                                                 <tr>
@@ -190,36 +177,11 @@
                                                 </tr>
                                             @endforeach
 
-
-
-
-
                                             </tbody>
-
                                         </table>
-
                                     </div>
-
-
-
-
-
                                 </div> <!-- / end col md 8 -->
-
-
-
-
-
-
-
-
-
-
-
-
                             </div> <!-- // END ORDER ITEM ROW -->
-
-
                         </div>
                     </div>
                 </div> <!-- End col md 6 -->
