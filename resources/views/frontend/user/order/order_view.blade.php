@@ -30,11 +30,15 @@
                                 <thead>
                                 <tr>
                                     <th>Date</th>
+                                    <th></th>
                                     <th>Total</th>
+                                    <th></th>
                                     <th>Payment</th>
+                                    <th></th>
                                     <th>Invoice</th>
+                                    <th></th>
                                     <th>Order</th>
-                                    <th class="text-right" style="padding-right: 25px;">Action</th>
+                                    <th class="text-right" style="padding-right: 25px">Action</th>
                                 </tr>
                                 </thead>
                             </table>
