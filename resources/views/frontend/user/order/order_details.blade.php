@@ -141,7 +141,7 @@
             </div> <!-- End row -->
 
             @if($order->status !== "delivered")
-                
+
             @else
                 <div class="row">
                     <div class="col-md-2"></div>

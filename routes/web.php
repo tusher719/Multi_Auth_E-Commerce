@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
@@ -142,6 +143,13 @@ Route::prefix('coupons')->group(function (){
     Route::get('/delete/{id}', [CouponController::class, 'CouponDelete'])->name('coupon.delete');
 
 });
+
+// Admin Order All Routes
+Route::prefix('orders')->group(function(){
+    Route::get('/pending/orders', [OrderController::class, 'PendingOrders'])->name('pending-orders');
+
+});
+
 
 // Admin Shipping All Routes
 Route::prefix('shipping')->group(function(){
