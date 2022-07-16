@@ -139,6 +139,19 @@
                 </div> <!-- End col md 10 -->
 
             </div> <!-- End row -->
+
+            @if($order->status !== "delivered")
+                
+            @else
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-10" style="margin: 20px 0; background: #d1d1d180; border-radius: 3px; padding: 12px 20px">
+                        <h4><strong>Order Return Reason:</strong></h4>
+                        <textarea name="" id="" rows="5" class="form-control" placeholder="Return reason"></textarea>
+                    </div>
+                </div>
+            @endif
+
         </div>
     </div>
 @endsection
