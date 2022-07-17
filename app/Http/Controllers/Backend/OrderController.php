@@ -29,7 +29,7 @@ class OrderController extends Controller
     // Confirmed Orders
     public function ConfirmedOrders(){
         $total_orders_confirm = Order::where('status','Confirm')->count();
-        $orders = Order::where('status','confirmed')->orderBy('id','DESC')->get();
+        $orders = Order::where('status','confirm')->orderBy('id','DESC')->get();
         return view('backend.orders.confirmed_orders',compact('orders','total_orders_confirm'));
 
     } // end mehtod
@@ -79,4 +79,72 @@ class OrderController extends Controller
         return view('backend.orders.cancel_orders',compact('orders','total_orders_cancel'));
 
     } // end mehtod
+
+    // Pending To Confirm
+    public function PendingToConfirm($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'Confirm']);
+
+        $notification = array(
+            'message' => 'Order Confirm Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('pending-orders')->with($notification);
+
+    } // end method
+
+
+    // Confirm To Processing
+    public function ConfirmToProcessing($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'Processing']);
+
+        $notification = array(
+            'message' => 'Order Processing Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('confirmed-orders')->with($notification);
+
+    } // end method
+
+    // Processing To Picked
+    public function ProcessingToPicked($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'Picked']);
+
+        $notification = array(
+            'message' => 'Order Picked Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('processing-orders')->with($notification);
+
+    } // end method
+
+
+    // Picked To Shipped$order
+    public function PickedToShipped($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'Shipped']);
+
+        $notification = array(
+            'message' => 'Order Shipped Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('picked-orders')->with($notification);
+
+    } // end method
+
+
+    // Shipped To Delivered
+    public function ShippedToDelivered($order_id){
+        Order::findOrFail($order_id)->update(['status' => 'Delivered']);
+
+        $notification = array(
+            'message' => 'Order Delivered Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('shipped-orders')->with($notification);
+
+    } // end method
+
+
+
+
+
 }

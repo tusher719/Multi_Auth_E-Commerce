@@ -13,7 +13,7 @@
                     <div class="d-inline-block align-items-center">
                         <nav>
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
                                 <li class="breadcrumb-item" aria-current="page">Orders</li>
                                 <li class="breadcrumb-item active" aria-current="page">Processing Orders</li>
 
@@ -41,6 +41,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Date </th>
                                         <th>Invoice </th>
                                         <th>Amount </th>
@@ -52,14 +53,15 @@
                                     <tbody>
                                     @foreach($orders as $item)
                                         <tr>
+                                            <td>{{ $loop->index+1 }}</td>
                                             <td> {{ $item->order_date }}  </td>
-                                            <td> {{ $item->invoice_no }}  </td>
-                                            <td> ${{ $item->amount }}  </td>
+                                            <td> #{{ $item->invoice_no }}  </td>
+                                            <td> ${{ number_format($item->amount,2) }}  </td>
 
                                             <td> {{ $item->payment_method }}  </td>
                                             <td> <span class="badge badge-pill badge-primary">{{ $item->status }} </span>  </td>
 
-                                            <td width="25%">
+                                            <td>
                                                 <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-eye"></i> </a>
                                                 <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>

@@ -57,7 +57,7 @@
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
                                             <td> {{ $item->order_date }}  </td>
-                                            <td> {{ $item->invoice_no }}  </td>
+                                            <td> #{{ $item->invoice_no }}  </td>
                                             <td> ${{ number_format($item->amount,2) }} </td>
 
                                             <td> {{ $item->payment_method }}  </td>
