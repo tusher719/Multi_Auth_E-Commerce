@@ -140,16 +140,39 @@
 
             </div> <!-- End row -->
 
-            @if($order->status !== "delivered")
+
+            @if($order->status !== "Delivered")
 
             @else
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-10" style="margin: 20px 0; background: #d1d1d180; border-radius: 3px; padding: 12px 20px">
-                        <h4><strong>Order Return Reason:</strong></h4>
-                        <textarea name="" id="" rows="5" class="form-control" placeholder="Return reason"></textarea>
+                @php
+                    $order = \App\Models\Order::where('id',$order->id)->where('return_reason','=',NULL)->first();
+                @endphp
+
+                @if($order)
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10" style="margin: 20px 0; background: #d1d1d180; border-radius: 3px; padding: 12px 20px">
+                            <form action="{{ route('return.order',$order->id) }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <h4><strong>Order Return Reason:</strong></h4>
+                                    <textarea name="return_reason" id="" rows="5" class="form-control" placeholder="Return reason" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Submit</button>
+
+                            </form>
+                        </div>
                     </div>
-                </div>
+                @else
+
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-10 text-center" style="margin: 20px 0; background: #d1d1d180; border-radius: 3px; padding: 12px 20px">
+                            <span class="badge badge-pill badge-warning" style="background: red">You Have send return request for this product</span>
+                        </div>
+                    </div>
+                @endif
+
             @endif
 
         </div>
