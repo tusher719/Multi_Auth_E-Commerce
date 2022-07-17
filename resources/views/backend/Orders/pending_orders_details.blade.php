@@ -9,34 +9,46 @@
 
 
         <div class="content-header">
-            <div class="d-flex align-items-center">
-                <div class="mr-auto">
-                    <h3 class="page-title">View Details</h3>
-                    <div class="d-inline-block align-items-center">
-                        <nav>
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page">Orders</li>
-                                <li class="breadcrumb-item" aria-current="page">
-                                    @if($order->status == 'Pending')
-                                        <a href="{{ route('pending-orders') }}">Pending Orders</a>
-                                    @elseif($order->status == 'Confirm')
-                                        <a href="{{ route('confirmed-orders') }}">Confirmed Orders</a>
-                                    @elseif($order->status == 'Processing')
-                                        <a href="{{ route('processing-orders') }}">Processing Orders</a>
-                                    @elseif($order->status == 'Picked')
-                                        <a href="{{ route('picked-orders') }}">Picked Orders</a>
-                                    @elseif($order->status == 'Shipped')
-                                        <a href="{{ route('shipped-orders') }}">Shipped Orders</a>
-                                    @elseif($order->status == 'Delivered')
-                                        <a href="{{ route('delivered-orders') }}">Delivered Orders</a>
-                                    @endif
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">View Details</li>
-
-                            </ol>
-                        </nav>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="d-flex align-items-center">
+                        <div class="mr-auto">
+                            <h3 class="page-title">View Details</h3>
+                            <div class="d-inline-block align-items-center">
+                                <nav>
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#"><i class="mdi mdi-home-outline"></i></a></li>
+                                        <li class="breadcrumb-item" aria-current="page">Orders</li>
+                                        <li class="breadcrumb-item" aria-current="page">
+                                            @if($order->status == 'Pending')
+                                                <a href="{{ route('pending-orders') }}">Pending Orders</a>
+                                            @elseif($order->status == 'Confirm')
+                                                <a href="{{ route('confirmed-orders') }}">Confirmed Orders</a>
+                                            @elseif($order->status == 'Processing')
+                                                <a href="{{ route('processing-orders') }}">Processing Orders</a>
+                                            @elseif($order->status == 'Picked')
+                                                <a href="{{ route('picked-orders') }}">Picked Orders</a>
+                                            @elseif($order->status == 'Shipped')
+                                                <a href="{{ route('shipped-orders') }}">Shipped Orders</a>
+                                            @elseif($order->status == 'Delivered')
+                                                <a href="{{ route('delivered-orders') }}">Delivered Orders</a>
+                                            @endif
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">View Details</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="col-md-2 text-right">
+                    @if($order->status == 'Pending')
+
+                    @else
+                        <a href="{{ route('invoice.download',$order->id) }}" class="btn btn-success" title="Invoice Download" target="_blank">
+                            <i class="fa fa-download"> Download</i>
+                        </a>
+                    @endif
                 </div>
             </div>
         </div>
