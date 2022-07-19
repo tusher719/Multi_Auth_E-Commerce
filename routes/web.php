@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ShippingAreaController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
@@ -195,6 +196,19 @@ Route::prefix('shipping')->group(function(){
 });
 
 
+
+// Admin Reports Routes
+Route::prefix('reports')->group(function(){
+
+    Route::get('/view', [ReportController::class, 'ReportView'])->name('all-reports');
+
+    Route::post('/search/by/date', [ReportController::class, 'ReportByDate'])->name('search-by-date');
+
+    Route::post('/search/by/month', [ReportController::class, 'ReportByMonth'])->name('search-by-month');
+
+    Route::post('/search/by/year', [ReportController::class, 'ReportByYear'])->name('search-by-year');
+
+});
 
 
 
