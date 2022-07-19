@@ -13,7 +13,7 @@
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
-                                <li class="breadcrumb-item" aria-current="page"><a href="{{ route('all.category') }}">All Reports</a></li>
+                                <li class="breadcrumb-item" aria-current="page">All Reports</li>
                                 <li class="breadcrumb-item active" aria-current="page">All Reports</li>
                             </ol>
                         </nav>
@@ -211,7 +211,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    
+
                                     </tbody>
 
                                 </table>

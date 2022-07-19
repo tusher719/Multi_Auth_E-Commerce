@@ -5,13 +5,13 @@
     <div class="content-header">
         <div class="d-flex align-items-center">
             <div class="mr-auto">
-                <h3 class="page-title">All Reports</h3>
+                <h3 class="page-title">Search Data</h3>
                 <div class="d-inline-block align-items-center">
                     <nav>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('all.category') }}">All Reports</a></li>
                             <li class="breadcrumb-item" aria-current="page">All Reports</li>
+                            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('all-reports') }}">All Reports</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Date, Month, Year Data</li>
                         </ol>
                     </nav>
