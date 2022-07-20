@@ -54,9 +54,9 @@
                                             <td>{{ $loop->index+1 }}</td>
                                             <td>{{ $item->category->blog_category_name_en }}</td>
                                             <td> <img src="{{ asset($item->post_image) }}" style="width: 60px; height: 60px;"> </td>
-                                            <td>{{ $item->post_title_en }}</td>
-                                            <td>{{ $item->post_title_ban }}</td>
-                                            <td width="20%">
+                                            <td>{{ Str::limit($item->post_title_en, 80) }}</td>
+                                            <td>{{ Str::limit($item->post_title_ban, 80) }}</td>
+                                            <td width="12%">
                                                 <a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                                 <a href="{{ route('category.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>

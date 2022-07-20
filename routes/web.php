@@ -235,6 +235,8 @@ Route::prefix('blog')->group(function(){
 
 //  Frontend Blog Show Routes
 Route::get('/blog', [HomeBlogController::class, 'AddBlogPost'])->name('home.blog');
+Route::get('/post/details/{id}', [HomeBlogController::class, 'DetailsBlogPost'])->name('post.details');
+Route::get('/blog/category/post/{category_id}', [HomeBlogController::class, 'HomeBlogCatPost']);
 
 
 

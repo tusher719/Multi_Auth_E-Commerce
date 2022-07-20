@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog\BlogPost;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\MultiImg;
@@ -17,6 +18,8 @@ use phpDocumentor\Reflection\DocBlock\Tag;
 class IndexController extends Controller
 {
     public function index() {
+        $blogpost = BlogPost::latest()->get();
+
         $sliders = Slider::where('status',1)->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->limit(6)->get();
         $categories = Category::orderBy('category_name_en','ASC')->get();
@@ -98,6 +101,7 @@ class IndexController extends Controller
             'skip_brand_product_5' => $skip_brand_product_5,
             'skip_brand_6' => $skip_brand_6,
             'skip_brand_product_6' => $skip_brand_product_6,
+            'blogpost' => $blogpost,
             ]);
     }
 
