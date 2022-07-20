@@ -8,6 +8,7 @@ use App\Models\Blog\BlogPostCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class BlogController extends Controller
 {
@@ -29,7 +30,7 @@ class BlogController extends Controller
 
         ],[
             'blog_category_name_en.required' => 'Input Blog Category English Name',
-            'blog_category_name_ban.required' => 'Input Blog Category Hindi Name',
+            'blog_category_name_ban.required' => 'Input Blog Category Bangla Name',
         ]);
 
         BlogPostCategory::insert([
@@ -97,13 +98,57 @@ class BlogController extends Controller
 
     ///////////////////////////// Blog Post ALL Methods //////////////////
 
-    public function ViewBlogPost(){
+    public function ListBlogPost(){
+        $blogpost = BlogPost::with('category')->latest()->get();
+        return view('backend.blog.post.post_list',compact('blogpost'));
+    } // end method
+
+    public function AddBlogPost(){
 
         $blogcategory = BlogPostCategory::latest()->get();
         $blogpost = BlogPost::latest()->get();
         return view('backend.blog.post.post_view',compact('blogpost','blogcategory'));
 
-    }
+    } // end method
+
+
+    public function BlogPostStore(Request $request){
+
+        $request->validate([
+            'post_title_en' => 'required',
+            'post_title_ban' => 'required',
+            'post_image' => 'required',
+        ],[
+            'post_title_en.required' => 'Input Post Title English Name',
+            'post_title_ban.required' => 'Input Post Title Bangla Name',
+        ]);
+
+        $image = $request->file('post_image');
+        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+        Image::make($image)->resize(780,433)->save('uploads/post/'.$name_gen);
+        $save_url = 'uploads/post/'.$name_gen;
+
+        BlogPost::insert([
+            'category_id' => $request->category_id,
+            'post_title_en' => $request->post_title_en,
+            'post_title_ban' => $request->post_title_ban,
+            'post_slug_en' => strtolower(str_replace(' ', '-',$request->post_title_en)),
+            'post_slug_ban' => str_replace(' ', '-',$request->post_slug_ban),
+            'post_image' => $save_url,
+            'post_details_en' => $request->post_details_en,
+            'post_details_ban' => $request->post_details_ban,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'Blog Post Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('list.post')->with($notification);
+
+    } // end mehtod
 
 
 

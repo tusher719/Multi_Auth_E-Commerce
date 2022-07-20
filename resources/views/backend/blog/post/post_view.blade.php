@@ -7,13 +7,13 @@
         <div class="content-header">
             <div class="d-flex align-items-center">
                 <div class="mr-auto">
-                    <h3 class="page-title">View Blog Post</h3>
+                    <h3 class="page-title">Add Blog Post</h3>
                     <div class="d-inline-block align-items-center">
                         <nav>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
                                 <li class="breadcrumb-item" aria-current="page">Manage Blog</li>
-                                <li class="breadcrumb-item active" aria-current="page">View Blog Post</li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Blog Post</li>
                             </ol>
                         </nav>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col">
 
-                            <form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data" >
+                            <form method="post" action="{{ route('post-store') }}" enctype="multipart/form-data" >
                                 @csrf
 
                                 <div class="row">

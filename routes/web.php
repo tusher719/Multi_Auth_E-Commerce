@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Frontend\LanguageController;
+use App\Http\Controllers\Frontend\HomeBlogController;
 use App\Models\User;
 use App\Http\Controllers\User\AllUserController;
 use App\Http\Controllers\User\CartPageController;
@@ -226,10 +227,14 @@ Route::prefix('blog')->group(function(){
     Route::get('/delete/{id}', [BlogController::class, 'BlogCategoryDelete'])->name('blog.category.delete');
 
     // Admin View Blog Post Routes
-    Route::get('/view/post', [BlogController::class, 'ViewBlogPost'])->name('view.post');
-
-
+    Route::get('/list/post', [BlogController::class, 'ListBlogPost'])->name('list.post');
+    Route::get('/add/post', [BlogController::class, 'AddBlogPost'])->name('add.post');
+    Route::post('/post/store', [BlogController::class, 'BlogPostStore'])->name('post-store');
 });
+
+
+//  Frontend Blog Show Routes
+Route::get('/blog', [HomeBlogController::class, 'AddBlogPost'])->name('home.blog');
 
 
 
