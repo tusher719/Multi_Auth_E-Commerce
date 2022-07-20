@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ProductController;
@@ -214,6 +215,15 @@ Route::prefix('all-user')->group(function(){
 });
 
 
+// Admin Blog Routes
+Route::prefix('blog')->group(function(){
+    Route::get('/category', [BlogController::class, 'BlogCategory'])->name('blog.category');
+    Route::post('/store', [BlogController::class, 'BlogCategoryStore'])->name('blogcategory.store');
+    Route::get('/category/edit/{id}', [BlogController::class, 'BlogCategoryEdit'])->name('blog.category.edit');
+    Route::post('/update', [BlogController::class, 'BlogCategoryUpdate'])->name('blogcategory.update');
+    Route::get('/delete/{id}', [BlogController::class, 'BlogCategoryDelete'])->name('blog.category.delete');
+    
+});
 
 
 
