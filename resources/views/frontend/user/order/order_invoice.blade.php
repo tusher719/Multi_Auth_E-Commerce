@@ -44,14 +44,20 @@
 </head>
 <body>
 
-<table width="100%" style="background: #F7F7F7; padding:0 20px 0 20px;">
+<table width="100%" style="background: #157ed2; padding:0 20px 0 20px;">
     <tr>
         <td valign="top">
         <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-            <h2 style="color: #03a9f4; font-size: 26px;"><strong>EasyShop</strong></h2>
+            @php
+                $setting = App\Models\SiteSetting::find(1);
+            @endphp
+
+            <h2 style="color: #03a9f4; font-size: 26px;">
+                <img src="{{ $setting->logo }}" alt="{{ $setting->company_name }} logo">
+            </h2>
         </td>
         <td align="right">
-            <pre class="font" >
+            <pre class="font" style="color: #fff;">
                EasyShop Head Office
                Email:support@easylearningbd.com <br>
                Mob: 1245454545 <br>
