@@ -141,7 +141,7 @@
             </div> <!-- End row -->
 
 
-            @if($order->status !== "Delivered")
+            @if($order->status !== "delivered")
 
             @else
                 @php
@@ -158,7 +158,7 @@
                                     <h4><strong>Order Return Reason:</strong></h4>
                                     <textarea name="return_reason" id="" rows="5" class="form-control" placeholder="Return reason" required></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-danger">Submit</button>
+                                <button type="submit" class="btn btn-danger">Return Order</button>
 
                             </form>
                         </div>

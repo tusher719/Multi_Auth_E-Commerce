@@ -184,15 +184,15 @@
                         </div>
 
                         <div class="box-footer text-right">
-                            @if($order->status == 'Pending')
+                            @if($order->status == 'pending')
                                 <a href="{{ route('pending.confirm',$order->id) }}" id="confirm" class="btn btn-outline btn-primary mb-5">Confirm Order</a>
-                            @elseif($order->status == 'Confirm')
+                            @elseif($order->status == 'confirm')
                                 <a href="{{ route('confirm.processing',$order->id) }}" id="processing" class="btn btn-outline btn-primary mb-5">Processing Order</a>
-                            @elseif($order->status == 'Processing')
+                            @elseif($order->status == 'processing')
                                 <a href="{{ route('processing.picked',$order->id) }}" id="picked" class="btn btn-outline btn-primary mb-5">Picked Order</a>
-                            @elseif($order->status == 'Picked')
+                            @elseif($order->status == 'picked')
                                 <a href="{{ route('picked.shipped',$order->id) }}" id="shipped" class="btn btn-outline btn-primary mb-5">Shipped Order</a>
-                            @elseif($order->status == 'Shipped')
+                            @elseif($order->status == 'shipped')
                                 <a href="{{ route('shipped.delivered',$order->id) }}" id="delivered" class="btn btn-outline btn-primary mb-5">Delivered Order</a>
                             @endif
                         </div>

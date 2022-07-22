@@ -52,7 +52,25 @@
                                             <td>৳ {{ number_format($order->amount,2) }}</td>
                                             <td>{{ $order->payment_method }}</td>
                                             <td>#{{ $order->invoice_no }}</td>
-                                            <td> <span class="badge badge-pill badge-info" style="background: #4caf50">{{ $order->status }}</span>
+                                            <td>
+                                                @if($order->status == 'pending')
+                                                    <span class="badge badge-pill badge-warning" style="background: #800080;"> Pending </span>
+                                                @elseif($order->status == 'confirm')
+                                                    <span class="badge badge-pill badge-warning" style="background: #0000FF;"> Confirm </span>
+                                                @elseif($order->status == 'processing')
+                                                    <span class="badge badge-pill badge-warning" style="background: #FFA500;"> Processing </span>
+                                                @elseif($order->status == 'picked')
+                                                    <span class="badge badge-pill badge-warning" style="background: #808000;"> Picked </span>
+                                                @elseif($order->status == 'shipped')
+                                                    <span class="badge badge-pill badge-warning" style="background: #808080;"> Shipped </span>
+                                                @elseif($order->status == 'delivered')
+                                                    <span class="badge badge-pill badge-warning" style="background: #008000;"> Delivered </span>
+                                                    @if($order->return_order == 1)
+                                                        <br><span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+                                                    @endif
+                                                @else
+                                                    <span class="badge badge-pill badge-warning" style="background: #FF0000;"> Cancel </span>
+                                                @endif
                                             </td>
                                             <td class="text-right">
                                                 <a href="{{ url('user/order_details/'.$order->id ) }}" class="btn btn-info" title="Invoice View"><i class="fa fa-eye"></i> </a>

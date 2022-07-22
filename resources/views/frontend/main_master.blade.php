@@ -19,7 +19,7 @@
         {{ $seo->google_analytics }}
     </script>
     <!-- /// Google Analytics Code // -->
-    
+
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->

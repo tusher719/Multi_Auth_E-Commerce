@@ -13,9 +13,8 @@ class OrderController extends Controller
 {
     // Pending Orders
     public function PendingOrders(){
-        $total_pending = Order::where('status','Pending')->count();
-        $orders = Order::where('status','Pending')->orderBy('id','DESC')->get();
-        return view('backend.orders.pending_orders',compact('orders', 'total_pending'));
+        $orders = Order::where('status','pending')->orderBy('id','DESC')->get();
+        return view('backend.orders.pending_orders',compact('orders'));
 
     } // end mehtod
 
@@ -30,27 +29,24 @@ class OrderController extends Controller
 
     // Confirmed Orders
     public function ConfirmedOrders(){
-        $total_orders_confirm = Order::where('status','Confirm')->count();
         $orders = Order::where('status','confirm')->orderBy('id','DESC')->get();
-        return view('backend.orders.confirmed_orders',compact('orders','total_orders_confirm'));
+        return view('backend.orders.confirmed_orders',compact('orders'));
 
     } // end mehtod
 
 
     // Processing Orders
     public function ProcessingOrders(){
-        $total_orders_pro = Order::where('status','Processing')->count();
         $orders = Order::where('status','processing')->orderBy('id','DESC')->get();
-        return view('backend.orders.processing_orders',compact('orders','total_orders_pro'));
+        return view('backend.orders.processing_orders',compact('orders'));
 
     } // end mehtod
 
 
     // Picked Orders
     public function PickedOrders(){
-        $total_orders_picked = Order::where('status','Picked')->count();
         $orders = Order::where('status','picked')->orderBy('id','DESC')->get();
-        return view('backend.orders.picked_orders',compact('orders','total_orders_picked'));
+        return view('backend.orders.picked_orders',compact('orders'));
 
     } // end mehtod
 
@@ -58,33 +54,30 @@ class OrderController extends Controller
 
     // Shipped Orders
     public function ShippedOrders(){
-        $total_orders_shipped = Order::where('status','Shipped')->count();
         $orders = Order::where('status','shipped')->orderBy('id','DESC')->get();
-        return view('backend.orders.shipped_orders',compact('orders','total_orders_shipped'));
+        return view('backend.orders.shipped_orders',compact('orders'));
 
     } // end mehtod
 
 
     // Delivered Orders
     public function DeliveredOrders(){
-        $total_orders_Delivered = Order::where('status','Delivered')->count();
         $orders = Order::where('status','delivered')->orderBy('id','DESC')->get();
-        return view('backend.orders.delivered_orders',compact('orders','total_orders_Delivered'));
+        return view('backend.orders.delivered_orders',compact('orders'));
 
     } // end mehtod
 
 
     // Cancel Orders
     public function CancelOrders(){
-        $total_orders_cancel = Order::where('status','Cancel')->count();
         $orders = Order::where('status','cancel')->orderBy('id','DESC')->get();
-        return view('backend.orders.cancel_orders',compact('orders','total_orders_cancel'));
+        return view('backend.orders.cancel_orders',compact('orders'));
 
     } // end mehtod
 
     // Pending To Confirm
     public function PendingToConfirm($order_id){
-        Order::findOrFail($order_id)->update(['status' => 'Confirm']);
+        Order::findOrFail($order_id)->update(['status' => 'confirm']);
 
         $notification = array(
             'message' => 'Order Confirm Successfully',
@@ -97,7 +90,7 @@ class OrderController extends Controller
 
     // Confirm To Processing
     public function ConfirmToProcessing($order_id){
-        Order::findOrFail($order_id)->update(['status' => 'Processing']);
+        Order::findOrFail($order_id)->update(['status' => 'processing']);
 
         $notification = array(
             'message' => 'Order Processing Successfully',
@@ -109,7 +102,7 @@ class OrderController extends Controller
 
     // Processing To Picked
     public function ProcessingToPicked($order_id){
-        Order::findOrFail($order_id)->update(['status' => 'Picked']);
+        Order::findOrFail($order_id)->update(['status' => 'picked']);
 
         $notification = array(
             'message' => 'Order Picked Successfully',
@@ -122,7 +115,7 @@ class OrderController extends Controller
 
     // Picked To Shipped$order
     public function PickedToShipped($order_id){
-        Order::findOrFail($order_id)->update(['status' => 'Shipped']);
+        Order::findOrFail($order_id)->update(['status' => 'shipped']);
 
         $notification = array(
             'message' => 'Order Shipped Successfully',
@@ -135,7 +128,7 @@ class OrderController extends Controller
 
     // Shipped To Delivered
     public function ShippedToDelivered($order_id){
-        Order::findOrFail($order_id)->update(['status' => 'Delivered']);
+        Order::findOrFail($order_id)->update(['status' => 'delivered']);
 
         $notification = array(
             'message' => 'Order Delivered Successfully',

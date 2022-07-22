@@ -53,7 +53,7 @@
             @endphp
 
             <h2 style="color: #03a9f4; font-size: 26px;">
-                <img src="{{ $setting->logo }}" alt="{{ $setting->company_name }} logo">
+                <img src="{{ asset($setting->logo) }}" alt="{{ $setting->company_name }} logo">
             </h2>
         </td>
         <td align="right">
