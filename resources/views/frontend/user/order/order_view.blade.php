@@ -64,9 +64,13 @@
                                                 @elseif($order->status == 'shipped')
                                                     <span class="badge badge-pill badge-warning" style="background: #808080;"> Shipped </span>
                                                 @elseif($order->status == 'delivered')
-                                                    <span class="badge badge-pill badge-warning" style="background: #008000;"> Delivered </span>
-                                                    @if($order->return_order == 1)
-                                                        <br><span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+                                                    @if($order->return_order == 2)
+                                                        <span class="badge badge-pill badge-warning" style="background: #008000;"> Return Success </span>
+                                                    @else
+                                                        <span class="badge badge-pill badge-warning" style="background: #008000;"> Delivered </span>
+                                                        @if($order->return_order == 1)
+                                                            <br><span class="badge badge-pill badge-warning" style="background:red;">Return Requested </span>
+                                                        @endif
                                                     @endif
                                                 @else
                                                     <span class="badge badge-pill badge-warning" style="background: #FF0000;"> Cancel </span>
