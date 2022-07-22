@@ -1,8 +1,24 @@
 @extends('admin.admin_master')
 @section('admin')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <div class="container-full">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Site Setting</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Manage Setting</li>
+                                <li class="breadcrumb-item active" aria-current="page">Site Setting</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="content">
 
@@ -106,9 +122,6 @@
 
                                         </div>	<!-- end row 	 -->
 
-
-
-
                                         <div class="text-xs-right">
                                             <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
                                         </div>
@@ -122,13 +135,8 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-
         </section>
 
-
-
     </div>
-
-
 
 @endsection

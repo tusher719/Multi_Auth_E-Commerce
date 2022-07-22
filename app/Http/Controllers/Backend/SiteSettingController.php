@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Seo;
 use App\Models\SiteSetting;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -70,6 +71,37 @@ class SiteSettingController extends Controller
 
         } // end else
     } // end method
+
+
+    // Seo method
+    public function SeoSetting(){
+
+        $seo = Seo::find(1);
+        return view('backend.setting.seo_update',compact('seo'));
+
+    }// end method
+
+    public function SeoSettingUpdate(Request $request){
+
+        $seo_id = $request->id;
+
+        Seo::findOrFail($seo_id)->update([
+            'meta_title' => $request->meta_title,
+            'meta_author' => $request->meta_author,
+            'meta_keyword' => $request->meta_keyword,
+            'meta_description' => $request->meta_description,
+            'google_analytics' => $request->google_analytics,
+
+        ]);
+
+        $notification = array(
+            'message' => 'Seo Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end mehtod
 
 
 }
