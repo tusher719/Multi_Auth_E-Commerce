@@ -29,6 +29,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\WishlistController;
 use App\Http\Controllers\User\StripeController;
 use App\Http\Controllers\User\CashController;
+use App\Http\Controllers\User\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -356,3 +357,7 @@ Route::get('/district-get/ajax/{division_id}', [CheckoutController::class, 'Dist
 Route::get('/state-get/ajax/{district_id}', [CheckoutController::class, 'StateGetAjax']);
 
 Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->name('checkout.store');
+
+
+/// Frontend Product Review Routes
+Route::post('/review/store', [ReviewController::class, 'ReviewStore'])->name('review.store');
