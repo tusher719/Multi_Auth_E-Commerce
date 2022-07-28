@@ -31,7 +31,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">All Return Orders List</h3>
+                            <h3 class="box-title">All Return Orders List <span class="badge badge-pill badge-danger"> {{ count($orders) }} </span></h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -39,6 +39,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Date </th>
                                         <th>Invoice </th>
                                         <th>Amount </th>
@@ -51,6 +52,7 @@
                                     <tbody>
                                     @foreach($orders as $item)
                                         <tr>
+                                            <td>{{ $loop->index+1 }}</td>
                                             <td> {{ $item->order_date }}  </td>
                                             <td> #{{ $item->invoice_no }}  </td>
                                             <td> ${{ number_format($item->amount,2) }} </td>

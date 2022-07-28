@@ -177,7 +177,7 @@ $route = Route::current()->getName();
 
             <li class="treeview {{ ($prefix == '/return')?'active':'' }}  ">
                 <a href="#">
-                    <i data-feather="file"></i>
+                    <i data-feather="target"></i>
                     <span>Return Order</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -186,6 +186,23 @@ $route = Route::current()->getName();
                 <ul class="treeview-menu">
                     <li class="{{ ($route == 'return.request')? 'active':'' }}"><a href="{{ route('return.request') }}"><i class="ti-more"></i>Return Request</a></li>
                     <li class="{{ ($route == 'all.request')? 'active':'' }}"><a href="{{ route('all.request') }}"><i class="ti-more"></i>All Request</a></li>
+
+                </ul>
+            </li>
+
+            <li class="treeview {{ ($prefix == '/review')?'active':'' }}  ">
+                <a href="#">
+                    <i data-feather="star"></i>
+                    <span>Manage Review</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ ($route == 'pending.review')? 'active':'' }}"><a href="{{ route('pending.review') }}"><i class="ti-more"></i>Pending Review</a></li>
+
+                    <li class="{{ ($route == 'publish.review')? 'active':'' }}"><a href="{{ route('publish.review') }}"><i class="ti-more"></i>Publish Review</a></li>
+
 
                 </ul>
             </li>

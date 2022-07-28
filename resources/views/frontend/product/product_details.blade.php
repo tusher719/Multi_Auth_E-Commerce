@@ -378,24 +378,27 @@
                                                 <div class="reviews">
 
                                                     @foreach($reviews as $item)
+                                                        @if($item->status == 0)
+
+                                                        @else
                                                             <div class="review">
 
                                                                 <div class="row">
-                                                                    <div class="col-md-3">
+                                                                    <div class="col-md-6">
                                                                         <img style="height: 40px; width:40px; border-radius: 50%; object-fit: cover;" src="{{ (!empty($item->user->profile_photo_path))? url('uploads/user_images/'.$item->user->profile_photo_path):url('upload/no_image.jpg') }}"><b> {{ $item->user->name }}</b>
                                                                     </div>
 
-                                                                    <div class="col-md-9">
+                                                                    <div class="col-md-6">
 
                                                                     </div>
                                                                 </div> <!-- // end row -->
 
                                                                 <div class="review-title">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-half-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
 
                                                                     <span class="summary" style="color: #ff7878; font-weight: 600;">{{ $item->summary }}</span>
                                                                 </div>
@@ -405,6 +408,7 @@
                                                                 </div>
                                                                 <div class="text">"{{ $item->comment }}"</div>
                                                             </div>
+                                                        @endif
                                                     @endforeach
 
                                                 </div><!-- /.reviews -->
