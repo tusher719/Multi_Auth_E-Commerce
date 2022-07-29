@@ -29,7 +29,7 @@
                             </li>
                             <li class="media">
                                 <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-envelope fa-stack-1x fa-inverse"></i> </span> </div>
-                                <div class="media-body"> <span><a href="#">flipmart@themesground.com</a></span> </div>
+                                <div class="media-body"> <span><a href="#">{{ $setting->email }}</a></span> </div>
                             </li>
                         </ul>
                     </div>

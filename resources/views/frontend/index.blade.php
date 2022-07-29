@@ -303,7 +303,7 @@
                                                 <div class="product">
                                                     <div class="product-image">
                                                         <div class="image">
-                                                            <a href="{{ url('producst/details/'.$product->id.'/'.$product->product_slug_en) }}">
+                                                            <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">
                                                                 <img src="{{ asset($product->product_thambnail) }}" alt="">
                                                             </a>
                                                         </div>
@@ -2100,7 +2100,7 @@
                                     <div class="item">
                                         <div class="blog-post">
                                             <div class="blog-post-image">
-                                                <div class="image"> <a href="blog.html"><img src="{{ asset($blog->post_image) }}" alt=""></a> </div>
+                                                <div class="image"> <a href="{{ route('post.details',$blog->id) }}"><img src="{{ asset($blog->post_image) }}" alt=""></a> </div>
                                             </div>
                                             <!-- /.blog-post-image -->
 
