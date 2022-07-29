@@ -263,6 +263,12 @@ Route::prefix('review')->group(function(){
 
 });
 
+// Admin Manage Review Routes
+Route::prefix('stock')->group(function(){
+    Route::get('/product', [ProductController::class, 'ProductStock'])->name('product.stock');
+
+});
+
 
 
 
