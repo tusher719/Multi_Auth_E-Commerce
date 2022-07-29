@@ -285,6 +285,13 @@
                                     </div><!-- /.quantity-container -->
 
 
+                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                    <div class="addthis_inline_share_toolbox_a9on"></div>
+
+
+
+
+
 
 
 
@@ -569,5 +576,10 @@
         <!-- /.logo-slider -->
             <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div><!-- /.body-content -->
+
+
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-62e35779e887ff28"></script>
+
 
 @endsection
