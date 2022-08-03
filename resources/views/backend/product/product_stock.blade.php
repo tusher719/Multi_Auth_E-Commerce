@@ -40,6 +40,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Image </th>
                                         <th>Product En</th>
                                         <th>Product Price </th>
@@ -52,6 +53,7 @@
                                     <tbody>
                                     @foreach($products as $item)
                                         <tr>
+                                            <td>{{ $loop->index+1 }}</td>
                                             <td> <img src="{{ asset($item->product_thambnail) }}" style="width: 60px; height: 50px;">  </td>
                                             <td>{{ $item->product_name_en }}</td>
                                             <td>

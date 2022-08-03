@@ -42,6 +42,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Image </th>
                                         <th>Name </th>
                                         <th>Email</th>
@@ -53,6 +54,7 @@
                                     <tbody>
                                     @foreach($users as $user)
                                         <tr>
+                                            <td>{{ $loop->index+1 }}</td>
                                             <td><img src="{{ (!empty($user->profile_photo_path))? url('uploads/user_images/'.$user->profile_photo_path):url('uploads/no_image.jpg') }}" style="width: 55px; height: 55px; border-radius: 50%; object-fit: cover;"> </td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
