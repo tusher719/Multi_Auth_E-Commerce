@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\AdminUserController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -263,12 +264,17 @@ Route::prefix('review')->group(function(){
 
 });
 
-// Admin Manage Review Routes
+// Admin Manage Stock Routes
 Route::prefix('stock')->group(function(){
     Route::get('/product', [ProductController::class, 'ProductStock'])->name('product.stock');
-
 });
 
+// Admin User Role Routes
+Route::prefix('admin-user-role')->group(function(){
+    Route::get('/all', [AdminUserController::class, 'AllAdminRole'])->name('all.admin.user');
+    Route::get('/add', [AdminUserController::class, 'AddAdminRole'])->name('add.admin');
+    Route::post('/store', [AdminUserController::class, 'StoreAdminRole'])->name('admin.user.store');
+});
 
 
 

@@ -439,7 +439,7 @@
                                 </div>
                                 <!-- /.cart-item -->
                     <div class="clearfix"></div>
-                    <hr>`
+                    <hr>
 
                 });
 
