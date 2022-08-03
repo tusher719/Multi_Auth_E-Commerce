@@ -143,7 +143,7 @@
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
 
-                                                <a href="{{ route('invoice.download',$item->id) }}" class="btn btn-danger" title="Delete" id="delete">
+                                                <a href="{{ route('delete.admin.user',$item->id) }}" class="btn btn-danger" title="Delete" id="delete">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </td>

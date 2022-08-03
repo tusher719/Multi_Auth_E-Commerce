@@ -169,5 +169,24 @@ class AdminUserController extends Controller
     } // end method
 
 
+    // Admin Role User Delete
+    public function DeleteAdminRole($id){
+
+        $adminimg = Admin::findOrFail($id);
+        $img = $adminimg->profile_photo_path;
+        unlink($img);
+
+        Admin::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Admin User Deleted Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->back()->with($notification);
+
+    } // end method
+
+
 
 }
