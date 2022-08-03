@@ -3,6 +3,26 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <div class="container-full">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Add Admin User</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Admin User Role</li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="{{ route('all.admin.user') }}">All Admin User</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Admin User</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="content">
 
@@ -91,7 +111,7 @@
                                             </div><!-- end cold md 6 -->
 
                                             <div class="col-md-6">
-                                                <img id="showImage" src="{{ url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px;">
+                                                <img id="showImage" src="{{ url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px; object-fit: cover;">
 
                                             </div><!-- end cold md 6 -->
                                         </div><!-- end row 	 -->

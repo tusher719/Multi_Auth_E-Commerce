@@ -6,6 +6,22 @@
 
     <div class="container-full">
         <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">All Admin User</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">Admin User Role</li>
+                                <li class="breadcrumb-item active" aria-current="page">All Admin User</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
         <!-- Main content -->
@@ -18,7 +34,7 @@
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Total Admin User </h3>
+                            <h3 class="box-title">Total Admin User <span class="badge badge-pill badge-danger badge-sm">{{ count($adminUser) }}</span></h3>
                             <a href="{{ route('add.admin') }}" class="btn btn-danger" style="float: right;">Add Admin User</a>
                         </div>
                         <!-- /.box-header -->
@@ -40,7 +56,7 @@
                                     @foreach($adminUser as $item)
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
-                                            <td> <img src="{{ asset($item->profile_photo_path) }}" style="width: 50px; height: 50px;">  </td>
+                                            <td> <img src="{{ asset($item->profile_photo_path) }}" style="width: 50px; height: 50px; object-fit: cover;border-radius: 3px;"></td>
                                             <td> {{ $item->name }}  </td>
                                             <td> {{ $item->email }}  </td>
 
@@ -123,7 +139,7 @@
 
 
                                             <td width="14%">
-                                                <a href="{{ route('pending.order.details',$item->id) }}" class="btn btn-info" title="Edit Data">
+                                                <a href="{{ route('edit.admin.user',$item->id) }}" class="btn btn-info" title="Edit Data">
                                                     <i class="fa fa-pencil"></i>
                                                 </a>
 
