@@ -5,6 +5,25 @@
 
 
     <div class="container-full">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Profile Edit</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item" aria-current="page">
+                                    <a href="{{ route('admin.profile') }}">Profile</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">Profile Edit</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="content">
 
@@ -30,7 +49,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-user"></i></span>
                                                         </div>
-                                                        <input type="text" name="name" class="form-control" placeholder="Enter Name...." required="" value="{{ $editData->name }}">
+                                                        <input type="text" name="name" class="form-control" placeholder="Enter Name...." value="{{ $editData->name }}">
                                                     </div>
                                                 </div>
                                             </div><!-- End col md 6 -->
@@ -42,7 +61,7 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-email"></i></span>
                                                         </div>
-                                                        <input type="email" name="email" class="form-control" placeholder="Enter Email...." required="" value="{{ $editData->email }}">
+                                                        <input type="email" name="email" class="form-control" placeholder="Enter Email...." value="{{ $editData->email }}">
                                                     </div>
                                                 </div>
                                             </div><!-- End col md 6 -->
@@ -54,13 +73,13 @@
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text"><i class="ti-image"></i></span>
                                                         </div>
-                                                        <input type="file" name="profile_photo_path" class="form-control" required="" id="image">
+                                                        <input type="file" name="profile_photo_path" class="form-control" id="image">
                                                     </div>
                                                 </div>
                                             </div> <!-- End col md 6 -->
 
                                             <div class="col-md-6">
-                                                <img class="rounded" id="showImage" src="{{ (!empty($editData->profile_photo_path)) ? url('uploads/admin_images/'.$editData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="" style="width: 120px; height: 120px; object-fit: cover">
+                                                <img class="rounded" id="showImage" src="{{ (!empty($editData->profile_photo_path)) ? asset($editData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="" style="width: 120px; height: 120px; object-fit: cover;">
                                             </div> <!-- End col md 6 -->
 
 

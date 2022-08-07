@@ -2,6 +2,22 @@
 
 @section('admin')
     <div class="container-full">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto">
+                    <h3 class="page-title">Profile</h3>
+                    <div class="d-inline-block align-items-center">
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ url('/admin/dashboard') }}"><i class="mdi mdi-home-outline"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Main content -->
         <section class="content">
@@ -14,7 +30,7 @@
                             <h6 class="widget-user-desc">{{ $adminData->email }}</h6>
                         </div>
                         <div class="widget-user-image">
-                            <img class="rounded-circle" src="{{ (!empty($adminData->profile_photo_path)) ? url('uploads/admin_images/'.$adminData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="Admin Avatar" style="height: 90px; width: 90px; object-fit: cover">
+                            <img class="rounded-circle" src="{{ (!empty($adminData->profile_photo_path)) ? asset($adminData->profile_photo_path) : url('uploads/no_image.jpg') }}" alt="Admin Avatar" style="height: 90px; width: 90px; object-fit: cover">
                         </div>
                         <div class="box-footer">
                             <div class="row">
