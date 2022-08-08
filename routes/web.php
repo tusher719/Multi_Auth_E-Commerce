@@ -395,3 +395,7 @@ Route::post('/checkout/store', [CheckoutController::class, 'CheckoutStore'])->na
 
 /// Frontend Product Review Routes
 Route::post('/review/store', [ReviewController::class, 'ReviewStore'])->name('review.store');
+
+
+/// Product Search Route
+Route::post('/search', [IndexController::class, 'ProductSearch'])->name('product.search');
