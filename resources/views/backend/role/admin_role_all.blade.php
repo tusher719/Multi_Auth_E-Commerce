@@ -101,7 +101,7 @@
                                                 @else
                                                 @endif
 
-                                                @if($item->returnorder == 1)
+                                                @if($item->return_order == 1)
                                                     <span class="badge btn-primary">Return Order</span>
                                                 @else
                                                 @endif
@@ -126,13 +126,13 @@
                                                 @else
                                                 @endif
 
-                                                @if($item->alluser == 1)
-                                                    <span class="badge btn-info">Alluser</span>
+                                                @if($item->all_user == 1)
+                                                    <span class="badge btn-info">All User</span>
                                                 @else
                                                 @endif
 
-                                                @if($item->adminuserrole == 1)
-                                                    <span class="badge btn-dark">Adminuserrole</span>
+                                                @if($item->admin_user_role == 1)
+                                                    <span class="badge btn-dark">Admin User Role</span>
                                                 @else
                                                 @endif
                                             </td>

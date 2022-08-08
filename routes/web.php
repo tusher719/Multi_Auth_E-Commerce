@@ -267,6 +267,7 @@ Route::prefix('review')->group(function(){
 // Admin Manage Stock Routes
 Route::prefix('stock')->group(function(){
     Route::get('/product', [ProductController::class, 'ProductStock'])->name('product.stock');
+
 });
 
 // Admin User Role Routes
@@ -280,6 +281,7 @@ Route::prefix('admin-user-role')->group(function(){
 
     Route::get('/delete/{id}', [AdminUserController::class, 'DeleteAdminRole'])->name('delete.admin.user');
 });
+
 
 
 

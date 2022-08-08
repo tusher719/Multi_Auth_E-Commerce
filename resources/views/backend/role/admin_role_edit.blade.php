@@ -109,7 +109,7 @@
                                             </div><!-- end cold md 6 -->
 
                                             <div class="col-md-6">
-                                                <img id="showImage" src="{{ url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px; object-fit: cover;">
+                                                <img id="showImage" src="{{ (!empty($adminuser->profile_photo_path)) ? asset($adminuser->profile_photo_path) : url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px; object-fit: cover;">
 
                                             </div><!-- end cold md 6 -->
                                         </div><!-- end row 	 -->
@@ -175,7 +175,7 @@
 
 
                                                         <fieldset>
-                                                            <input type="checkbox" id="checkbox_10" name="return_order" value="1" {{ $adminuser->returnorder == 1 ? 'checked' : '' }}>
+                                                            <input type="checkbox" id="checkbox_10" name="return_order" value="1" {{ $adminuser->return_order == 1 ? 'checked' : '' }}>
                                                             <label for="checkbox_10">Return Order</label>
                                                         </fieldset>
 
@@ -209,13 +209,13 @@
                                                         </fieldset>
 
                                                         <fieldset>
-                                                            <input type="checkbox" id="checkbox_15" name="all_user" value="1" {{ $adminuser->alluser == 1 ? 'checked' : '' }}>
-                                                            <label for="checkbox_15">Alluser</label>
+                                                            <input type="checkbox" id="checkbox_15" name="all_user" value="1" {{ $adminuser->all_user == 1 ? 'checked' : '' }}>
+                                                            <label for="checkbox_15">All User</label>
                                                         </fieldset>
 
                                                         <fieldset>
-                                                            <input type="checkbox" id="checkbox_16" name="admin_user_role" value="1" {{ $adminuser->adminuserrole == 1 ? 'checked' : '' }}>
-                                                            <label for="checkbox_16">Adminuserrole</label>
+                                                            <input type="checkbox" id="checkbox_16" name="admin_user_role" value="1" {{ $adminuser->admin_user_role == 1 ? 'checked' : '' }}>
+                                                            <label for="checkbox_16">Admin User Role</label>
                                                         </fieldset>
                                                     </div>
                                                 </div>

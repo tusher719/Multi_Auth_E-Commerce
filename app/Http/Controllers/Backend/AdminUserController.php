@@ -67,9 +67,6 @@ class AdminUserController extends Controller
 
     } // end method
 
-
-
-
     // Admin Edit Role
     public function EditAdminRole($id){
 
@@ -84,11 +81,11 @@ class AdminUserController extends Controller
     public function UpdateAdminRole(Request $request){
 
         $admin_id = $request->id;
-        $old_img = $request->old_image;
+//        $old_img = $request->old_image;
 
         if ($request->file('profile_photo_path')) {
 
-            unlink($old_img);
+//            unlink($old_img);
             $image = $request->file('profile_photo_path');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(225,225)->save('uploads/admin_images/'.$name_gen);
@@ -186,6 +183,9 @@ class AdminUserController extends Controller
         return redirect()->back()->with($notification);
 
     } // end method
+
+
+
 
 
 

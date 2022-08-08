@@ -34,14 +34,20 @@ class AdminProfileController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
 
-        $image = $request->file('profile_photo_path');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
-        Image::make($image)->resize(225,225)->save('uploads/admin_images/'.$name_gen);
-        $save_url = 'uploads/admin_images/'.$name_gen;
+//        $old_image = $request->old_image;
 
-        Admin::findOrFail($id)->update([
-            'profile_photo_path' => $save_url,
-        ]);
+        if ($request->file('profile_photo_path')){
+//            unlink($old_image);
+            $image = $request->file('profile_photo_path');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(225,225)->save('uploads/admin_images/'.$name_gen);
+            $save_url = 'uploads/admin_images/'.$name_gen;
+
+            Admin::findOrFail($id)->update([
+                'profile_photo_path' => $save_url,
+            ]);
+        }
+        $data->save();
 
         $notification = array(
             'message' => 'Admin Profile Updated Successfully',
@@ -80,9 +86,8 @@ class AdminProfileController extends Controller
 
     // All Register User
     public function AllUsers(){
-        $total_user = User::count();
         $users = User::latest()->get();
-        return view('backend.users.all_user',compact('users','total_user'));
+        return view('backend.users.all_user',compact('users'));
     }
 
 

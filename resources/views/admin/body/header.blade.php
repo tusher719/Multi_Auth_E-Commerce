@@ -103,7 +103,7 @@
 
             @php
                 $adminId = Auth::id();
-                $adminData = DB::table('admins')->find($adminId);
+                    $adminData = DB::table('admins')->find($adminId);
             @endphp
 
                 <!-- User Account-->
