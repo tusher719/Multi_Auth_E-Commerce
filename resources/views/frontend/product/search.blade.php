@@ -26,9 +26,6 @@
             @include('frontend.common.vertical_menu')
             <!-- = ==== TOP NAVIGATION : END === ===== -->
 
-
-
-
                 <div class="sidebar-module-container">
                     <div class="sidebar-filter">
                         <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
@@ -39,7 +36,6 @@
                             </div>
                             <div class="sidebar-widget-body">
                                 <div class="accordion">
-
 
                                     @foreach($categories as $category)
                                         <div class="accordion-group">
@@ -61,7 +57,6 @@
                                                         </ul>
                                                     @endforeach
 
-
                                                 </div>
                                                 <!-- /.accordion-inner -->
                                             </div>
@@ -69,16 +64,6 @@
                                         </div>
                                         <!-- /.accordion-group -->
                                     @endforeach
-
-
-
-
-
-
-
-
-
-
 
                                 </div>
                                 <!-- /.accordion -->
@@ -157,23 +142,15 @@
                         <!-- /.sidebar-widget -->
                         <!-- ============================================== COMPARE: END ============================================== -->
 
-
                         <!-- == ====== PRODUCT TAGS ==== ======= -->
                     @include('frontend.common.product_tags')
                     <!-- /.sidebar-widget -->
                         <!-- == ====== END PRODUCT TAGS ==== ======= -->
 
-
-
-
-
-
                         <!----------- Testimonials------------->
 
                     @include('frontend.common.testimonials')
                     <!-- == ========== Testimonials: END ======== ========= -->
-
-
 
                         <div class="home-banner"> <img src="{{ asset('frontend/assets/images/banners/LHS-banner.jpg') }}" alt="Image"> </div>
                     </div>
@@ -183,8 +160,6 @@
             </div>
             <!-- /.sidebar -->
             <div class='col-md-9'>
-
-
 
                 <!-- == ==== SECTION – HERO === ====== -->
 
@@ -204,7 +179,6 @@
                 </div>
 
                 <h4><b>Total Search </b><span class="badge badge-danger" style="background: #FF0000;"> {{ count($products) }} </span> Items  </h4>
-
 
                 <div class="clearfix filters-container m-t-10">
                     <div class="row">
@@ -271,7 +245,6 @@
                     <!-- /.row -->
                 </div>
 
-
                 <!--    //////////////////// START Product Grid View  ////////////// -->
 
                 <div class="search-result-container ">
@@ -279,8 +252,6 @@
                         <div class="tab-pane active " id="grid-container">
                             <div class="category-product">
                                 <div class="row">
-
-
 
                                     @foreach($products as $product)
                                         <div class="col-sm-6 col-md-4 wow fadeInUp">
@@ -303,7 +274,6 @@
                                                             @endif
                                                         </div>
 
-
                                                     </div>
                                                     <!-- /.product-image -->
 
@@ -322,9 +292,6 @@
                                                             <div class="product-price"> <span class="price"> ${{ $product->discount_price }} </span> <span class="price-before-discount">$ {{ $product->selling_price }}</span> </div>
                                                     @endif
 
-
-
-
                                                     <!-- /.product-price -->
 
                                                     </div>
@@ -333,10 +300,14 @@
                                                         <div class="action">
                                                             <ul class="list-unstyled">
                                                                 <li class="add-cart-button btn-group">
-                                                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                    <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fa fa-shopping-cart"></i> </button>
                                                                     <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
                                                                 </li>
-                                                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                <li class="add-cart-button btn-group">
+                                                                    <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)">
+                                                                        <i class="icon fa fa-heart"></i>
+                                                                    </button>
+                                                                </li>
                                                                 <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                                             </ul>
                                                         </div>
@@ -352,16 +323,6 @@
                                         <!-- /.item -->
                                     @endforeach
 
-
-
-
-
-
-
-
-
-
-
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -372,17 +333,10 @@
 
                         <!--            //////////////////// END Product Grid View  ////////////// -->
 
-
-
-
                         <!--            //////////////////// Product List View Start ////////////// -->
-
-
 
                         <div class="tab-pane "  id="list-container">
                             <div class="category-product">
-
-
 
                                 @foreach($products as $product)
                                     <div class="category-product-inner wow fadeInUp">
@@ -416,10 +370,14 @@
                                                                 <div class="action">
                                                                     <ul class="list-unstyled">
                                                                         <li class="add-cart-button btn-group">
-                                                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                                            <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fa fa-shopping-cart"></i> </button>
+                                                                            <button class="btn btn-primary cart-btn" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="{{ $product->id }}" onclick="productView(this.id)">Add to cart</button>
                                                                         </li>
-                                                                        <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                        <li class="add-cart-button btn-group">
+                                                                            <button class="btn btn-primary icon" type="button" title="Wishlist" id="{{ $product->id }}" onclick="addToWishList(this.id)">
+                                                                                <i class="icon fa fa-heart"></i>
+                                                                            </button>
+                                                                        </li>
                                                                         <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
                                                                     </ul>
                                                                 </div>
@@ -432,8 +390,6 @@
                                                     </div>
                                                     <!-- /.col -->
                                                 </div>
-
-
 
                                             @php
                                                 $amount = $product->selling_price - $product->discount_price;
@@ -449,8 +405,6 @@
                                                     @endif
                                                 </div>
 
-
-
                                             </div>
                                             <!-- /.product-list -->
                                         </div>
@@ -462,13 +416,6 @@
 
 
                             <!--            //////////////////// Product List View END ////////////// -->
-
-
-
-
-
-
-
 
                             </div>
                             <!-- /.category-product -->
@@ -498,45 +445,7 @@
         </div>
         <!-- /.row -->
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-        <div id="brands-carousel" class="logo-slider wow fadeInUp">
-            <div class="logo-slider-inner">
-                <div id="brand-slider" class="owl-carousel brand-slider custom-carousel owl-theme">
-                    <div class="item m-t-15"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item m-t-10"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand3.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand6.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand2.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand4.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand1.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-
-                    <div class="item"> <a href="#" class="image"> <img data-echo="assets/images/brands/brand5.png" src="assets/images/blank.gif" alt=""> </a> </div>
-                    <!--/.item-->
-                </div>
-                <!-- /.owl-carousel #logo-slider -->
-            </div>
-            <!-- /.logo-slider-inner -->
-
-        </div>
-        <!-- /.logo-slider -->
+        @include('frontend.body.brands')
         <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> </div>
     <!-- /.container -->
 
