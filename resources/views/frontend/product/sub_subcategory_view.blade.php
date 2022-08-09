@@ -10,7 +10,45 @@
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
                 <li><a href="{{ url('/') }}">Home</a></li>
-                <li class='active'>Handbags</li>
+                @foreach($breadsubsubcat as $item)
+                    <li>
+                        <a href="#" title="@if(session()->get('language') == 'bangla')
+                            {{ $item->category->category_name_ban }}
+                        @else
+                            {{ $item->category->category_name_en }}
+                        @endif">
+                            @if(session()->get('language') == 'bangla')
+                                {{ $item->category->category_name_ban }}
+                            @else
+                                {{ $item->category->category_name_en }}
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
+
+                @foreach($breadsubsubcat as $item)
+                    <li><a href="#" title="@if(session()->get('language') == 'bangla')
+                            {{ $item->subcategory->subcategory_name_ban }}
+                        @else
+                            {{ $item->subcategory->subcategory_name_en }}
+                        @endif">
+                            @if(session()->get('language') == 'bangla')
+                                {{ $item->subcategory->subcategory_name_ban }}
+                            @else
+                                {{ $item->subcategory->subcategory_name_en }}
+                            @endif
+                        </a></li>
+                @endforeach
+
+                @foreach($breadsubsubcat as $item)
+                    <li class='active'>
+                        @if(session()->get('language') == 'bangla')
+                            {{ $item->subsubcategory_name_ban }}
+                        @else
+                            {{ $item->subsubcategory_name_en }}
+                        @endif
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- /.breadcrumb-inner -->

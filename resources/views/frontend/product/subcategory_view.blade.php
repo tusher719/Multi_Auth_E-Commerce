@@ -9,8 +9,38 @@
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="{{ url('/') }}">Home</a></li>
-                <li class='active'>Category</li>
+                <li><a href="#">Home</a></li>
+                @foreach($breadsubcat as $item)
+                    <li>
+                        <a href="#" title="@if(session()->get('language') == 'bangla')
+                            {{ $item->category->category_name_ban }}
+                        @else
+                            {{ $item->category->category_name_en }}
+                        @endif">
+                            @if(session()->get('language') == 'bangla')
+                                {{ $item->category->category_name_ban }}
+                            @else
+                                {{ $item->category->category_name_en }}
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
+
+                @foreach($breadsubcat as $item)
+                    <li class='active' title="@if(session()->get('language') == 'bangla')
+                        {{ $item->subcategory_name_ban }}
+                    @else
+                        {{ $item->subcategory_name_en }}
+                    @endif">
+                        <a href="#">
+                            @if(session()->get('language') == 'bangla')
+                                {{ $item->subcategory_name_ban }}
+                            @else
+                                {{ $item->subcategory_name_en }}
+                            @endif
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <!-- /.breadcrumb-inner -->

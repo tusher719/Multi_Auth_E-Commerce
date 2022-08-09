@@ -10,31 +10,39 @@
         <div class="container">
             <div class="breadcrumb-inner">
                 <ul class="list-inline list-unstyled">
-                    <li><a href="{{ url('/') }}" title="@if(session()->get('language') == 'bangla') ঘর @else Home @endif">
+                    <li>
+                        <a href="{{ url('/') }}" title="@if(session()->get('language') == 'bangla') ঘর @else Home @endif">
                             <i class="fa fa-home"></i>
-                        </a></li>
-                    <li><a href="#" title="@if(session()->get('language') == 'bangla') {{ $title->category->category_name_ban }} @else {{ $title->category->category_name_en }} @endif">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="@if(session()->get('language') == 'bangla') {{ $title->category->category_name_ban }} @else {{ $title->category->category_name_en }} @endif">
                             @if(session()->get('language') == 'bangla')
                                 {{ $title->category->category_name_ban }}
                             @else
                                 {{ $title->category->category_name_en }}
                             @endif
-                        </a></li>
-                    <li><a href="#" title="@if(session()->get('language') == 'bangla') {{ $title->subcategory->subcategory_name_ban }} @else {{ $title->subcategory->subcategory_name_en }} @endif">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="@if(session()->get('language') == 'bangla') {{ $title->subcategory->subcategory_name_ban }} @else {{ $title->subcategory->subcategory_name_en }} @endif">
                             @if(session()->get('language') == 'bangla')
                                 {{ $title->subcategory->subcategory_name_ban }}
                             @else
                                 {{ $title->subcategory->subcategory_name_en }}
                             @endif
-                        </a></li>
-                    <li><a href="#" title="@if(session()->get('language') == 'bangla')
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" title="@if(session()->get('language') == 'bangla')
                         {{ $title->subsubcategory->subsubcategory_name_ban }} @else {{ $title->subsubcategory->subsubcategory_name_en }} @endif">
                             @if(session()->get('language') == 'bangla')
                                 {{ $title->subsubcategory->subsubcategory_name_ban }}
                             @else
                                 {{ $title->subsubcategory->subsubcategory_name_en }}
                             @endif
-                        </a></li>
+                        </a>
+                    </li>
                     <li class='active'>
                         @if(session()->get('language') == 'bangla')
                             {{ $product->product_name_ban }}
