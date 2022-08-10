@@ -39,6 +39,7 @@
                                     <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Rating</th>
                                         <th>Summary</th>
                                         <th>Comment</th>
                                         <th>User</th>
@@ -51,6 +52,52 @@
                                     @foreach($review as $item)
                                         <tr>
                                             <td>{{ $loop->index+1 }}</td>
+                                            <td width="10%">
+                                                @if($item->rating == NULL)
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                @elseif($item->rating == 1)
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                @elseif($item->rating == 2)
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+
+                                                @elseif($item->rating == 3)
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+
+                                                @elseif($item->rating == 4)
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                @elseif($item->rating == 5)
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                    <i style="color: #daa520" class="fa fa-star"></i>
+                                                @endif
+                                                    @if($item->rating == NULL)
+                                                        <h6 style="font-size: 10px; color: #607d8b;">(0 Rating)</h6>
+                                                    @else
+                                                        <h6 style="font-size: 10px; color: #607d8b;">({{ $item->rating }} Rating)</h6>
+                                                    @endif
+                                            </td>
                                             <td> {{ Str::limit($item->summary, 40) }}  </td>
                                             <td> {{ Str::limit($item->comment, 101) }}  </td>
                                             <td>  {{ $item->user->name }}  </td>

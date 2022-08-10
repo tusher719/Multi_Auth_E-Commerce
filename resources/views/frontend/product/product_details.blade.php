@@ -6,6 +6,12 @@
 @endsection
 {{-- {{ \App\Models\Category::find($product_singles->category_id)->category_name }} --}}
 
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+
     <div class="breadcrumb">
         <div class="container">
             <div class="breadcrumb-inner">
@@ -134,6 +140,14 @@
 
                                 </div><!-- /.single-product-gallery -->
                             </div><!-- /.gallery-holder -->
+
+
+                            @php
+                                $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+                                $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                            @endphp
+
+
                             <div class='col-sm-6 col-md-7 product-info-block'>
                                 <div class="product-info">
                                     <h1 class="name" id="pname">
@@ -147,11 +161,47 @@
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <div class="rating rateit-small"></div>
+
+                                                @if($avarage == 0)
+                                                    No Rating Yet
+                                                @elseif($avarage == 1 || $avarage < 2)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 2 || $avarage < 3)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 3 || $avarage < 4)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+
+                                                @elseif($avarage == 4 || $avarage < 5)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star"></span>
+                                                @elseif($avarage == 5 || $avarage < 5)
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                    <span class="fa fa-star checked"></span>
+                                                @endif
+
                                             </div>
+
                                             <div class="col-sm-8">
                                                 <div class="reviews">
-                                                    <a href="#" class="lnk">(13 Reviews)</a>
+                                                    <a href="#" class="lnk">({{ count($reviewcount) }} Reviews)</a>
                                                 </div>
                                             </div>
                                         </div><!-- /.row -->
@@ -357,6 +407,30 @@
 
                                                             <input type="hidden" name="product_id" value="{{ $product->id }}">
 
+                                                            <table class="table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th class="cell-label">&nbsp;</th>
+                                                                    <th>1 star</th>
+                                                                    <th>2 stars</th>
+                                                                    <th>3 stars</th>
+                                                                    <th>4 stars</th>
+                                                                    <th>5 stars</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="cell-label">Quality</td>
+                                                                    <td><input type="radio" name="quality" class="radio" value="1"></td>
+                                                                    <td><input type="radio" name="quality" class="radio" value="2"></td>
+                                                                    <td><input type="radio" name="quality" class="radio" value="3"></td>
+                                                                    <td><input type="radio" name="quality" class="radio" value="4"></td>
+                                                                    <td><input type="radio" name="quality" class="radio" value="5"></td>
+                                                                </tr>
+
+                                                                </tbody>
+                                                            </table>
+
                                                             <div class="row">
                                                                 <div class="col-sm-6">
 
@@ -409,11 +483,42 @@
                                                                 </div> <!-- // end row -->
 
                                                                 <div class="review-title">
+                                                                    @if($item->rating == NULL)
+
+                                                                    @elseif($item->rating == 1)
                                                                         <i style="color: #daa520" class="fa fa-star"></i>
-                                                                        <i style="color: #daa520" class="fa fa-star"></i>
-                                                                        <i style="color: #daa520" class="fa fa-star"></i>
-                                                                        <i style="color: #daa520" class="fa fa-star-half-o"></i>
                                                                         <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                    @elseif($item->rating == 2)
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+
+                                                                    @elseif($item->rating == 3)
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+
+                                                                    @elseif($item->rating == 4)
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star-o"></i>
+                                                                    @elseif($item->rating == 5)
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+                                                                        <i style="color: #daa520" class="fa fa-star"></i>
+
+                                                                    @endif
 
                                                                     <span class="summary" style="color: #ff7878; font-weight: 600;">{{ $item->summary }}</span>
                                                                 </div>
