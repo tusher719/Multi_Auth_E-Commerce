@@ -103,7 +103,8 @@
                                                         <th>Size</th>
                                                         <th>Quantity</th>
                                                         <th>Price</th>
-                                                        <th class="text-right">Total</th>
+                                                        <th>Total</th>
+                                                        <th class="text-right">Download</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -123,6 +124,25 @@
                                                             <td>{{ $item->qty }}</td>
                                                             <td>{{ number_format($item->price,2) }}৳</td>
                                                             <td class="text-right">{{ number_format($item->price * $item->qty,2) }}৳</td>
+                                                            @php
+                                                                $file = App\Models\Product::where('id',$item->product_id)->first();
+                                                            @endphp
+
+                                                            <td class="col-md-1">
+                                                                @if($order->status == 'pending')
+                                                                    <strong>
+                                                                        <span class="badge badge-pill badge-success" style="background: #418DB9;"> No File</span>
+                                                                    </strong>
+                                                                @elseif($order->status == 'confirm')
+                                                                    <a target="_blank" href="{{ asset('uploads/pdf/'.$file->digital_file) }}">
+                                                                        <strong>
+                                                                            <span class="badge badge-pill badge-success" style="background: #FF0000;"> Download Ready</span>
+                                                                        </strong>
+                                                                    </a>
+                                                                @endif
+
+
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
