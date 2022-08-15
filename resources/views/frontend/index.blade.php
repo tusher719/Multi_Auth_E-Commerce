@@ -5,6 +5,13 @@
     Easy Online Shop
 @endsection
 
+<style>
+    .nry,
+    .checked {
+        color: orange;
+    }
+</style>
+
     <div class="body-content outer-top-xs" id="top-banner-and-menu">
         <div class="container">
             <div class="row">
@@ -54,7 +61,10 @@
                                                                     @endif
                                                                 </a>
                                                             </h3>
-                                                            <div class="rating rateit-small"></div>
+
+                                                            <!-- Rating & Revirew Start -->
+                                                            @include('frontend.common.rating')
+                                                            <!-- Rating & Revirew End -->
 
                                                             @if($product->discount_price == NULL)
                                                                 <div class="product-price"> <span class="price"> ৳{{ number_format($product->selling_price) }} </span> </div>
@@ -126,7 +136,10 @@
                                                                         {{ $product->product_name_en }}
                                                                     @endif
                                                                 </a></h3>
-                                                            <div class="rating rateit-small"></div>
+
+                                                                <!-- Rating & Revirew Start -->
+                                                                @include('frontend.common.rating')
+                                                                <!-- Rating & Revirew End -->
 
                                                             @if($product->discount_price == NULL)
                                                                 <div class="product-price">
@@ -336,8 +349,10 @@
                                                                 @endif
                                                             </a>
                                                         </h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="description"></div>
+
+                                                        <!-- Rating & Revirew Start -->
+                                                        @include('frontend.common.rating')
+                                                        <!-- Rating & Revirew End -->
 
                                                         @if($product->discount_price == NULL)
                                                             <div class="product-price">
@@ -437,8 +452,10 @@
                                                                         @endif
                                                                     </a>
                                                                 </h3>
-                                                                <div class="rating rateit-small"></div>
-                                                                <div class="description"></div>
+
+                                                                <!-- Rating & Revirew Start -->
+                                                                @include('frontend.common.rating')
+                                                                <!-- Rating & Revirew End -->
 
 
                                                                 @if($product->discount_price == NULL)
@@ -567,8 +584,10 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -675,9 +694,9 @@
                                                         @endif
                                                     </a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
-
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
@@ -775,8 +794,9 @@
                                                         @endif
                                                     </a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -869,8 +889,9 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -960,8 +981,9 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1058,8 +1080,9 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1190,9 +1213,10 @@
                                                         @endif
                                                     </a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
 
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
                                                 @if($product->discount_price == NULL)
                                                     <div class="product-price">
@@ -1292,8 +1316,11 @@
                                                         @endif
                                                     </a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1391,8 +1418,11 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1490,8 +1520,11 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1589,8 +1622,11 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1688,8 +1724,11 @@
                                                             {{ $product->product_name_en }}
                                                         @endif
                                                     </a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)
@@ -1784,8 +1823,11 @@
                                                         @endif
                                                     </a>
                                                 </h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="description"></div>
+
+
+                                                <!-- Rating & Revirew Start -->
+                                                @include('frontend.common.rating')
+                                                <!-- Rating & Revirew End -->
 
 
                                                 @if($product->discount_price == NULL)

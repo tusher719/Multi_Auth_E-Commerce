@@ -5,6 +5,13 @@
     SubCategory Product | Easy Online Shop
 @endsection
 
+<style>
+    .nry,
+    .checked {
+        color: orange;
+    }
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <div class="breadcrumb">

@@ -55,7 +55,10 @@
                                 @endif
                             </a>
                         </h3>
-                        <div class="rating rateit-small"></div>
+
+                        <!-- Rating & Revirew Start -->
+                        @include('frontend.common.rating')
+                        <!-- Rating & Revirew End -->
 
                         @if($product->discount_price == NULL)
                             <div class="product-price">
