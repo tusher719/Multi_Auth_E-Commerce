@@ -556,18 +556,7 @@
                         <!-- /.tab-pane #list-container -->
                     </div>
                     <!-- /.tab-content -->
-                    <div class="clearfix filters-container">
-                        <div class="text-right">
-                            <div class="pagination-container">
-                                <ul class="list-inline list-unstyled">
-                                    {{ $products->links()  }}
-                                </ul>
-                                <!-- /.list-inline -->
-                            </div>
-                            <!-- /.pagination-container --> </div>
-                        <!-- /.text-right -->
-
-                    </div>
+                    {{ $products->links('frontend.vendor.pagination.default')  }}
                     <!-- /.filters-container -->
 
                 </div>
