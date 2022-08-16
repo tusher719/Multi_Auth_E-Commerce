@@ -27,6 +27,10 @@
 <!-- /.breadcrumb -->
 <div class="body-content outer-top-xs">
     <div class='container'>
+
+        <form action="{{ route('shop.filter') }}" method="post">
+            @csrf
+
         <div class='row'>
             <div class='col-md-3 sidebar'>
 
@@ -47,35 +51,87 @@
                             </div>
                             <div class="sidebar-widget-body">
                                 <div class="accordion">
+                                    @if(!empty($_GET['category']))
+                                        @php
+                                            $filterCat = explode(',',$_GET['category']);
+                                        @endphp
+                                    @endif
 
 
                                     @foreach($categories as $category)
                                         <div class="accordion-group">
-                                            <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
-                                                    @if(session()->get('language') == 'bangla') {{ $category->category_name_ban }} @else {{ $category->category_name_en }} @endif </a> </div>
-                                            <!-- /.accordion-heading -->
-                                            <div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
-                                                <div class="accordion-inner">
 
-                                                    @php
-                                                        $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderBy('subcategory_name_en','ASC')->get();
-                                                    @endphp
+                                            <div class="accordion-heading">
 
-                                                    @foreach($subcategories as $subcategory)
-                                                        <ul>
-                                                            <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->subcategory_slug_en ) }}">
-                                                                    @if(session()->get('language') == 'bangla') {{ $subcategory->subcategory_name_ban }} @else {{ $subcategory->subcategory_name_en }} @endif</a></li>
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" name="category[]" value="{{ $category->category_slug_en }}" @if(!empty($filterCat) && in_array($category->category_slug_en,$filterCat)) checked @endif  onchange="this.form.submit()">
 
-                                                        </ul>
-                                                    @endforeach
+                                                    @if(session()->get('language') == 'hindi') {{ $category->category_name_hin }} @else {{ $category->category_name_en }} @endif
 
-                                                </div>
-                                                <!-- /.accordion-inner -->
+                                                </label>
+
+
                                             </div>
-                                            <!-- /.accordion-body -->
+
+                                            <!-- /.accordion-heading -->
+
+
+
                                         </div>
                                         <!-- /.accordion-group -->
                                     @endforeach
+
+
+                                </div>
+                                <!-- /.accordion -->
+                            </div>
+                            <!-- /.sidebar-widget-body -->
+
+                            <!-- /.sidebar-widget -->
+
+
+
+
+                            <!--  /////////// This is for Brand Filder /////////////// -->
+
+
+
+                            <div class="widget-header">
+                                <h4 class="widget-title">Brand Filter</h4>
+                            </div>
+                            <div class="sidebar-widget-body">
+                                <div class="accordion">
+
+                                    @if(!empty($_GET['brand']))
+                                        @php
+                                            $filterBrand = explode(',',$_GET['brand']);
+                                        @endphp
+                                    @endif
+
+
+
+                                    @foreach($brands as $brand)
+                                        <div class="accordion-group">
+                                            <div class="accordion-heading">
+
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input" name="brand[]" value="{{ $brand->brand_slug_en }}" @if(!empty($filterBrand) && in_array($brand->brand_slug_en,$filterBrand)) checked @endif onchange="this.form.submit()">
+
+                                                    @if(session()->get('language') == 'hindi') {{ $brand->brand_name_hin }} @else {{ $brand->brand_name_en }} @endif
+
+                                                </label>
+
+
+                                            </div>
+                                            <!-- /.accordion-heading -->
+
+
+                                        </div>
+                                        <!-- /.accordion-group -->
+                                    @endforeach
+
+
+
 
                                 </div>
                                 <!-- /.accordion -->
@@ -356,10 +412,6 @@
                                                                 <span class="price-before-discount">$ {{ number_format($product->selling_price) }}</span>
                                                             </div>
                                                     @endif
-
-
-
-
                                                     <!-- /.product-price -->
 
                                                     </div>
@@ -391,16 +443,6 @@
                                         <!-- /.item -->
                                     @endforeach
 
-
-
-
-
-
-
-
-
-
-
                                 </div>
                                 <!-- /.row -->
                             </div>
@@ -409,19 +451,12 @@
                         </div>
                         <!-- /.tab-pane -->
 
-                        <!--            //////////////////// END Product Grid View  ////////////// -->
+                        <!-- //////////////////// END Product Grid View  ////////////// -->
 
-
-
-
-                        <!--            //////////////////// Product List View Start ////////////// -->
-
-
+                        <!-- //////////////////// Product List View Start ////////////// -->
 
                         <div class="tab-pane "  id="list-container">
                             <div class="category-product">
-
-
 
                                 @foreach($products as $product)
                                     <div class="category-product-inner wow fadeInUp">
@@ -437,9 +472,15 @@
                                                     <!-- /.col -->
                                                     <div class="col col-sm-8 col-lg-8">
                                                         <div class="product-info">
-                                                            <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
-                                                                    @if(session()->get('language') == 'bangla') {{ $product->product_name_ban }} @else {{ $product->product_name_en }} @endif</a></h3>
-
+                                                            <h3 class="name">
+                                                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}">
+                                                                    @if(session()->get('language') == 'bangla')
+                                                                        {{ $product->product_name_ban }}
+                                                                    @else
+                                                                        {{ $product->product_name_en }}
+                                                                    @endif
+                                                                </a>
+                                                            </h3>
 
                                                             @php
                                                                 $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
@@ -556,7 +597,7 @@
                         <!-- /.tab-pane #list-container -->
                     </div>
                     <!-- /.tab-content -->
-                    {{ $products->links('frontend.vendor.pagination.default')  }}
+                    {{ $products->appends($_GET)->links('frontend.vendor.pagination.custom')  }}
                     <!-- /.filters-container -->
 
                 </div>
@@ -569,9 +610,12 @@
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
         @include('frontend.body.brands')
         <!-- /.logo-slider -->
-        <!-- ============================================== BRANDS CAROUSEL : END ============================================== --> </div>
+        <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     <!-- /.container -->
 
+        </form>
+
+    </div>
 </div>
 <!-- /.body-content -->
 
