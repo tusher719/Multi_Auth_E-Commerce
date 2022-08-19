@@ -19,9 +19,11 @@ class SiteSettingController extends Controller
     public function SiteSettingUpdate(Request $request){
 
         $setting_id = $request->id;
+        $old_image = $request->old_image;
 
         if ($request->file('logo')) {
 
+            unlink($old_image);
             $image = $request->file('logo');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(139,36)->save('uploads/logo/'.$name_gen);
