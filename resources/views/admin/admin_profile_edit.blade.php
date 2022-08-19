@@ -38,6 +38,9 @@
                         <div class="col">
                             <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
                                 @csrf
+
+                                <input type="hidden" name="old_image" value="{{ $editData->profile_photo_path }}">
+
                                 <div class="row">
                                     <div class="col-12">
 

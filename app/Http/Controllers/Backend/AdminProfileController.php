@@ -34,12 +34,12 @@ class AdminProfileController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
 
-//        $old_image = $request->old_image;
+        $old_image = $request->old_image;
 
         if ($request->file('profile_photo_path')){
-//            unlink($old_image);
+            unlink($old_image);
             $image = $request->file('profile_photo_path');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            $name_gen = strtolower(str_replace(' ', '-',$request->name)).'_'.hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(225,225)->save('uploads/admin_images/'.$name_gen);
             $save_url = 'uploads/admin_images/'.$name_gen;
 
