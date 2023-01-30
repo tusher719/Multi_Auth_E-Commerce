@@ -7,10 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-<h1 align="center">Hi 👋, I'm Mehedi Hasan Tusher</h1>
-<h3 align="center">A passionate frontend and backend developer from Bangladesh</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=multiauthecommerce&label=Profile%20views&color=80b3ff&style=flat" alt="multiauthecommerce" /> </p>
+
+<p align="center"> <img src="https://komarev.com/ghpvc/?username=multiauthecommerce&label=Profile%20views&color=80b3ff&style=flat" alt="multiauthecommerce" /> </p>
 
 ## About Laravel
 
