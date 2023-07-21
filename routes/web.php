@@ -235,6 +235,10 @@ Route::prefix('blog')->group(function(){
     Route::get('/list/post', [BlogController::class, 'ListBlogPost'])->name('list.post');
     Route::get('/add/post', [BlogController::class, 'AddBlogPost'])->name('add.post');
     Route::post('/post/store', [BlogController::class, 'BlogPostStore'])->name('post-store');
+
+    Route::get('/post/edit/{id}', [BlogController::class, 'BlogPostEdit'])->name('blog.post.edit');
+    Route::get('/post/delete/{id}', [BlogController::class, 'BlogPostDelete'])->name('blog.post.delete');
+    Route::post('/post/update/{id}', [BlogController::class, 'BlogPostUpdate'])->name('blog.post.update');
 });
 
 

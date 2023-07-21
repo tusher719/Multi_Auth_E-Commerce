@@ -347,9 +347,9 @@
                                                 <div class="form-group">
                                                     <h5>Short Description English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-	<textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text">
-		{!! $products->short_descp_en !!}
-	</textarea>
+                                                        <textarea name="short_descp_en" id="textarea" class="form-control" required placeholder="Textarea text">
+                                                            {!! $products->short_descp_en !!}
+                                                        </textarea>
                                                     </div>
                                                 </div>
 
@@ -360,9 +360,9 @@
                                                 <div class="form-group">
                                                     <h5>Short Description Ban <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-	<textarea name="short_descp_ban" id="textarea" class="form-control" required placeholder="Textarea text">
-		{!! $products->short_descp_ban !!}
-	</textarea>
+                                                        <textarea name="short_descp_ban" id="textarea" class="form-control" required placeholder="Textarea text">
+                                                            {!! $products->short_descp_ban !!}
+                                                        </textarea>
                                                     </div>
                                                 </div>
 
@@ -381,9 +381,9 @@
                                                 <div class="form-group">
                                                     <h5>Long Description English <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-	<textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
-		{!! $products->long_descp_en !!}
-						</textarea>
+                                                        <textarea id="editor1" name="long_descp_en" rows="10" cols="80" required="">
+                                                            {!! $products->long_descp_en !!}
+                                                        </textarea>
                                                     </div>
                                                 </div>
 
@@ -394,9 +394,9 @@
                                                 <div class="form-group">
                                                     <h5>Long Description Bangla <span class="text-danger">*</span></h5>
                                                     <div class="controls">
-	<textarea id="editor2" name="long_descp_ban" rows="10" cols="80">
-		{!! $products->long_descp_ban !!}
-						</textarea>
+                                                        <textarea id="editor2" name="long_descp_ban" rows="10" cols="80">
+                                                            {!! $products->long_descp_ban !!}
+                                                        </textarea>
                                                     </div>
                                                 </div>
 

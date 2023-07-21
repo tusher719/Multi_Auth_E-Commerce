@@ -151,6 +151,91 @@ class BlogController extends Controller
     } // end mehtod
 
 
+    // Blog Post Edit
+    public function BlogPostEdit($id){
+
+        $blogpost = BlogPost::findOrFail($id);
+        $blogcategory = BlogPostCategory::latest()->get();
+        return view('backend.blog.post.post_edit',compact('blogpost','blogcategory'));
+    } // end method
+
+
+
+
+
+
+    // Blog Post Update
+    public function BlogPostUpdate(Request $request){
+        $blogpost = $request->id;
+        $old_image = $request->old_image;
+
+        if ($request->file('post_image')) {
+            unlink($old_image);
+            $image = $request->file('post_image');
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(780,433)->save('uploads/post/'.$name_gen);
+            $save_url = 'uploads/post/'.$name_gen;
+
+            BlogPost::findOrFail($blogpost)->update([
+                'category_id' => $request->category_id,
+                'post_title_en' => $request->post_title_en,
+                'post_title_ban' => $request->post_title_ban,
+                'post_slug_en' => strtolower(str_replace(' ', '-',$request->post_title_en)),
+                'post_slug_ban' => str_replace(' ', '-',$request->post_slug_ban),
+                'post_details_en' => $request->post_details_en,
+                'post_details_ban' => $request->post_details_ban,
+                'updated_at' => Carbon::now(),
+                'post_image' => $save_url,
+            ]);
+
+            $notification = array(
+                'message' => 'Blog Post Updated Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect()->route('list.post')->with($notification);
+        }
+        else{
+            BlogPost::findOrFail($blogpost)->update([
+                'category_id' => $request->category_id,
+                'post_title_en' => $request->post_title_en,
+                'post_title_ban' => $request->post_title_ban,
+                'post_slug_en' => strtolower(str_replace(' ', '-',$request->post_title_en)),
+                'post_slug_ban' => str_replace(' ', '-',$request->post_slug_ban),
+                'post_details_en' => $request->post_details_en,
+                'post_details_ban' => $request->post_details_ban,
+                'updated_at' => Carbon::now(),
+            ]);
+
+            $notification = array(
+                'message' => 'Blog Post Updated Successfully',
+                'alert-type' => 'info'
+            );
+            return redirect()->route('list.post')->with($notification);
+        }
+    } // End Method
+
+
+
+
+
+
+    // Post Delete function
+    public function BlogPostDelete($id){
+
+        $blogpost = BlogPost::findOrFail($id);
+        $img = $blogpost->post_image;
+        unlink($img);
+
+        BlogPost::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Blog Post Deleted Successfully',
+            'alert-type' => 'info'
+        );
+        return redirect()->back()->with($notification);
+    } // End Method
+
+
 
 
 }
