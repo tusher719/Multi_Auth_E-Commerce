@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
 {
     // Pending Orders
-    public function PendingOrders(){
+    public function PendingOrders(){ 
         $orders = Order::where('status','pending')->orderBy('id','DESC')->get();
         return view('backend.orders.pending_orders',compact('orders'));
 

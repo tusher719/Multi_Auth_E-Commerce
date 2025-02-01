@@ -24,7 +24,7 @@
                             </div>
                             <div>
                                 <p class="text-mute mt-20 mb-0 font-size-16">Today's Sale</p>
-                                <h3 class="text-white mb-0">${{ number_format($today)  }} <small class="text-success"><i class="fa fa-caret-up"></i> USD</small></h3>
+                                <h3 class="text-white mb-0">${{ number_format($today) }} <small class="text-success"><i class="fa fa-caret-up"></i> USD</small></h3>
                             </div>
                         </div>
                     </div>
